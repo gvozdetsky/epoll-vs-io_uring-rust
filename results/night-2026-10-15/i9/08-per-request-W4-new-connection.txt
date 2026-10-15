@@ -1,0 +1,22 @@
+# per-request-W4-new-connection on i9, 2026-10-14 23:54:16
+# WORKERS=4 SERVER_CPUS=0,2,4,6 CLIENT_CPUS=8-31 WRK_THREADS=16 WRK_CONNS=512
+round=1 keepalive=0 monoio:uring instr/req user 5819 kernel 60601 total 66420  cycles/req 40746  ctxsw/req 0.191
+round=1 keepalive=0 monoio:uring syscalls/req (307428 requests): setsockopt 1.002 io_uring_enter 1.182  total 2.187
+round=1 keepalive=0 compio:uring instr/req user 9863 kernel 55041 total 64903  cycles/req 39358  ctxsw/req 0.103
+round=1 keepalive=0 compio:uring syscalls/req (225707 requests): setsockopt 1.002 io_uring_enter 1.170 close 1.002  total 3.178
+round=1 keepalive=0 tokio instr/req user 6796 kernel 60021 total 66817  cycles/req 43037  ctxsw/req 0.192
+round=1 keepalive=0 tokio syscalls/req (155158 requests): setsockopt 1.003 epoll_ctl 2.007 epoll_wait 0.120 write 0.018 close 1.003 accept4 1.073 (0.069 failed) sendto 1.002 recvfrom 1.003  total 7.234
+round=1 keepalive=0 tokio-mt instr/req user 6748 kernel 58550 total 65298  cycles/req 50040  ctxsw/req 0.169
+round=1 keepalive=0 tokio-mt syscalls/req (102936 requests): setsockopt 1.005 epoll_ctl 2.010 epoll_wait 2.521 write 0.703 close 1.005 accept4 1.005 sendto 1.004 futex 2.533 (0.202 failed) recvfrom 1.005  total 12.793
+round=1 keepalive=0 tokio-uring instr/req user 9424 kernel 59444 total 68868  cycles/req 42545  ctxsw/req 0.090
+round=1 keepalive=0 tokio-uring syscalls/req (188254 requests): setsockopt 1.003 epoll_wait 2.149 (0.057 failed) io_uring_enter 1.147 close 1.003  total 5.305
+round=1 keepalive=0 monoio:legacy instr/req user 4504 kernel 58520 total 63025  cycles/req 39991  ctxsw/req 0.132
+round=1 keepalive=0 monoio:legacy syscalls/req (155857 requests): setsockopt 1.003 epoll_ctl 2.007 epoll_wait 0.117 close 1.003 accept4 1.055 (0.051 failed) sendto 1.003 recvfrom 1.003  total 7.195
+round=1 keepalive=0 compio:poll instr/req user 8874 kernel 52798 total 61671  cycles/req 37280  ctxsw/req 0.003
+round=1 keepalive=0 compio:poll syscalls/req (174906 requests): read 0.090 (0.090 failed) setsockopt 1.003 epoll_ctl 0.553 close 1.003 epoll_pwait 0.090 accept4 1.068 (0.065 failed) sendto 1.002 timerfd_settime 0.090 recvfrom 1.125 (0.122 failed)  total 6.026
+round=1 keepalive=0 nginx=/usr/sbin/nginx instr/req user 10155 kernel 55490 total 65645  cycles/req 38496  ctxsw/req 0.028
+round=1 keepalive=0 nginx=/usr/sbin/nginx syscalls/req (164841 requests): epoll_ctl 1.003 epoll_wait 1.060 writev 1.003 close 1.003 accept4 1.003 recvfrom 1.003  total 6.078
+round=1 keepalive=0 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:io_uring instr/req user 19919 kernel 60799 total 80719  cycles/req 49356  ctxsw/req 0.187
+round=1 keepalive=0 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:io_uring syscalls/req (270923 requests): setsockopt 1.002 io_uring_enter 1.306  total 2.316
+round=1 keepalive=0 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll instr/req user 17744 kernel 59163 total 76908  cycles/req 47045  ctxsw/req 0.189
+round=1 keepalive=0 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll syscalls/req (157590 requests): setsockopt 1.003 epoll_ctl 2.007 epoll_wait 0.088 close 1.003 mprotect 0.006 accept4 1.045 (0.042 failed) sendto 1.003 recvfrom 1.003  total 7.163

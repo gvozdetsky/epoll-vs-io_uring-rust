@@ -1,0 +1,57 @@
+# ruxen-L2-epoll-vs-io_uring on i7, 2026-10-14 23:21:09
+# WORKERS=2 SERVER_CPUS=0,1 CLIENT_CPUS=2,3,4,5,8,9,10,11 WRK_THREADS=8 WRK_CONNS=512
+=== ruxen m1_hello: ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll vs ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring
+# A=ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring B=ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll url=http://127.0.0.1:8080/ conf=/home/eugene/ruxen-bench/article/ruxen-configs/m1 pairs=8 duration=10s keepalive=1 workers=2 server_cpus=0,1 client_cpus=2,3,4,5,8,9,10,11 wrk=-t8/-c512
+pair 0 A 246567.63 p50 1990 p99 2420 | B 161519.09 p50 3150 p99 3270 | B/A 65.51%
+pair 1 A 238782.15 p50 2060 p99 5120 | B 164801.81 p50 3100 p99 3230 | B/A 69.02%
+pair 2 A 248304.36 p50 1760 p99 2570 | B 164372.93 p50 2940 p99 3440 | B/A 66.20%
+pair 3 A 247367.78 p50 2040 p99 2230 | B 165271.32 p50 3140 p99 3310 | B/A 66.81%
+pair 4 A 247034.47 p50 2040 p99 2250 | B 169684.34 p50 3000 p99 3120 | B/A 68.69%
+pair 5 A 246905.34 p50 2040 p99 2200 | B 165741.30 p50 3080 p99 3270 | B/A 67.13%
+pair 6 A 248565.68 p50 2000 p99 2360 | B 160136.81 p50 3310 p99 3490 | B/A 64.42%
+pair 7 A 247818.81 p50 2040 p99 2130 | B 162891.64 p50 3130 p99 3290 | B/A 65.73%
+RESULT ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll / ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring: 66.7% (min 64.4, max 69.0; 8 pairs)  p50 us A 2040 B 3115  p99 us A 2305 B 3280
+=== ruxen m1_no_keepalive: ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll vs ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring
+# A=ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring B=ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll url=http://127.0.0.1:8081/ conf=/home/eugene/ruxen-bench/article/ruxen-configs/m1_no_keepalive pairs=8 duration=10s keepalive=0 workers=2 server_cpus=0,1 client_cpus=2,3,4,5,8,9,10,11 wrk=-t8/-c512
+pair 0 A 46201.99 p50 4640 p99 20010 | B 60046.10 p50 10920 p99 16480 | B/A 129.96%
+pair 1 A 45575.91 p50 4540 p99 21100 | B 60657.60 p50 8320 p99 16390 | B/A 133.09%
+pair 2 A 45954.67 p50 4960 p99 20260 | B 59910.26 p50 8970 p99 16530 | B/A 130.37%
+pair 3 A 47932.33 p50 4640 p99 20700 | B 60546.07 p50 8920 p99 16370 | B/A 126.32%
+pair 4 A 47629.22 p50 5150 p99 17250 | B 60262.76 p50 8340 p99 16460 | B/A 126.52%
+pair 5 A 45997.72 p50 5770 p99 29290 | B 60071.57 p50 8650 p99 16490 | B/A 130.60%
+pair 6 A 46485.24 p50 5850 p99 20260 | B 59063.07 p50 10140 p99 16850 | B/A 127.06%
+pair 7 A 48899.90 p50 5050 p99 19830 | B 59421.95 p50 8710 p99 16670 | B/A 121.52%
+RESULT ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll / ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring: 128.1% (min 121.5, max 133.1; 8 pairs)  p50 us A 5005 B 8815  p99 us A 20260 B 16485
+=== ruxen proxy_hello: ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll vs ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring
+# A=ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring B=ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll url=http://127.0.0.1:8095/ conf=/home/eugene/ruxen-bench/article/ruxen-configs/proxy_pass pairs=8 duration=10s keepalive=1 workers=2 server_cpus=0,1 client_cpus=2,3,4,5,8,9,10,11 wrk=-t8/-c512
+pair 0 A 63698.23 p50 7010 p99 291840 | B 45590.57 p50 11060 p99 13590 | B/A 71.57%
+pair 1 A 63785.58 p50 7400 p99 280010 | B 44907.10 p50 11240 p99 13450 | B/A 70.40%
+pair 2 A 63108.58 p50 6900 p99 296810 | B 46345.96 p50 10980 p99 12910 | B/A 73.44%
+pair 3 A 63605.26 p50 7360 p99 276370 | B 45722.82 p50 11130 p99 12610 | B/A 71.89%
+pair 4 A 64064.02 p50 7110 p99 297360 | B 45035.59 p50 11080 p99 13740 | B/A 70.30%
+pair 5 A 63679.83 p50 6930 p99 282220 | B 46708.63 p50 10910 p99 11730 | B/A 73.35%
+pair 6 A 62994.54 p50 6810 p99 312620 | B 46052.05 p50 11050 p99 11980 | B/A 73.10%
+pair 7 A 64020.80 p50 7320 p99 290930 | B 45060.10 p50 11050 p99 13800 | B/A 70.38%
+RESULT ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll / ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring: 71.8% (min 70.3, max 73.4; 8 pairs)  p50 us A 7060 B 11055  p99 us A 291385 B 13180
+=== ruxen m3_static_1k: ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll vs ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring
+# A=ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring B=ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll url=http://127.0.0.1:8090/hello.txt conf=/home/eugene/ruxen-bench/article/ruxen-configs/m3 pairs=8 duration=10s keepalive=1 workers=2 server_cpus=0,1 client_cpus=2,3,4,5,8,9,10,11 wrk=-t8/-c512
+pair 0 A 116669.41 p50 4320 p99 4730 | B 80459.78 p50 6090 p99 6990 | B/A 68.96%
+pair 1 A 121982.35 p50 4160 p99 4400 | B 80918.66 p50 5840 p99 7060 | B/A 66.34%
+pair 2 A 120364.89 p50 4220 p99 4370 | B 78395.42 p50 6410 p99 6900 | B/A 65.13%
+pair 3 A 109622.34 p50 4530 p99 5570 | B 81750.33 p50 6310 p99 6510 | B/A 74.57%
+pair 4 A 100825.42 p50 4470 p99 10110 | B 81924.46 p50 6240 p99 6430 | B/A 81.25%
+pair 5 A 117465.82 p50 4300 p99 4650 | B 83094.62 p50 6220 p99 6640 | B/A 70.74%
+pair 6 A 120197.89 p50 4220 p99 4450 | B 82766.15 p50 6170 p99 6320 | B/A 68.86%
+pair 7 A 119892.49 p50 4230 p99 4400 | B 80642.91 p50 6340 p99 6510 | B/A 67.26%
+RESULT ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll / ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring: 70.2% (min 65.1, max 81.2; 8 pairs)  p50 us A 4265 B 6230  p99 us A 4550 B 6575
+=== ruxen tls_hello: ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll vs ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring
+# A=ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring B=ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll url=https://127.0.0.1:8443/ conf=/home/eugene/ruxen-bench/article/ruxen-configs/tls pairs=8 duration=10s keepalive=1 workers=2 server_cpus=0,1 client_cpus=2,3,4,5,8,9,10,11 wrk=-t8/-c512
+pair 0 A 166730.39 p50 2940 p99 3510 | B 114373.82 p50 4390 p99 4600 | B/A 68.60%
+pair 1 A 165647.42 p50 2980 p99 3200 | B 115405.63 p50 4270 p99 4790 | B/A 69.67%
+pair 2 A 167158.14 p50 2880 p99 3560 | B 114257.66 p50 4390 p99 4570 | B/A 68.35%
+pair 3 A 167319.62 p50 2900 p99 3510 | B 114246.39 p50 4380 p99 4580 | B/A 68.28%
+pair 4 A 167500.01 p50 2910 p99 3460 | B 114710.05 p50 4380 p99 4570 | B/A 68.48%
+pair 5 A 168287.35 p50 2910 p99 3390 | B 112557.68 p50 4320 p99 5060 | B/A 66.88%
+pair 6 A 167005.68 p50 2840 p99 3600 | B 117695.30 p50 4260 p99 4460 | B/A 70.47%
+pair 7 A 167279.95 p50 2900 p99 3440 | B 114149.78 p50 4400 p99 4660 | B/A 68.24%
+RESULT ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll / ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring: 68.6% (min 66.9, max 70.5; 8 pairs)  p50 us A 2905 B 4380  p99 us A 3485 B 4590

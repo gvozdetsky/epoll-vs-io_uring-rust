@@ -1,0 +1,18 @@
+# The same minimal keep-alive `return 200` server on each runtime, measured
+# with scripts/abba.sh. Started as the spike for ruxen#272.
+[package]
+name = "runtime-spike"
+version = "0.0.0"
+edition = "2024"
+publish = false
+license = "Apache-2.0"
+
+[workspace]
+
+[dependencies]
+libc = "0.2"
+socket2 = "0.5"
+monoio = "0.2.4"
+compio = { version = "0.19", default-features = false, features = ["runtime", "net", "io", "io-uring", "polling"] }
+tokio = { version = "1", features = ["rt", "rt-multi-thread", "net", "io-util"] }
+tokio-uring = "0.5"

@@ -1,0 +1,12 @@
+# util-W8 on i9, 2026-10-14 21:48:44
+# WORKERS=8 SERVER_CPUS=0,2,4,6,8,10,12,14 CLIENT_CPUS=16-31 WRK_THREADS=16 WRK_CONNS=512
+keepalive=1 monoio:uring rps 1157857 p50us 290 p99us 3140  server cpus 0,2,4,6,8,10,12,14: 95% (min 92, max 98)  client cpus 16-31: 94% (min 90, max 97)
+keepalive=1 compio:uring rps 1291788 p50us 335 p99us 1220  server cpus 0,2,4,6,8,10,12,14: 99% (min 97, max 99)  client cpus 16-31: 98% (min 93, max 100)
+keepalive=1 tokio rps 1399718 p50us 284 p99us 3260  server cpus 0,2,4,6,8,10,12,14: 89% (min 26, max 99)  client cpus 16-31: 99% (min 99, max 100)
+keepalive=1 tokio-mt rps 1236828 p50us 351 p99us 930  server cpus 0,2,4,6,8,10,12,14: 88% (min 87, max 88)  client cpus 16-31: 94% (min 93, max 94)
+keepalive=1 tokio-uring rps 1298483 p50us 192 p99us 429  server cpus 0,2,4,6,8,10,12,14: 99% (min 99, max 100)  client cpus 16-31: 99% (min 99, max 100)
+keepalive=1 monoio:legacy rps 1311752 p50us 308 p99us 2970  server cpus 0,2,4,6,8,10,12,14: 93% (min 50, max 100)  client cpus 16-31: 99% (min 98, max 99)
+keepalive=1 compio:poll rps 993765 p50us 506 p99us 780  server cpus 0,2,4,6,8,10,12,14: 100% (min 100, max 100)  client cpus 16-31: 88% (min 86, max 90)
+keepalive=1 nginx=/usr/sbin/nginx rps 1039643 p50us 417 p99us 3150  server cpus 0,2,4,6,8,10,12,14: 95% (min 87, max 99)  client cpus 16-31: 93% (min 91, max 96)
+keepalive=1 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:io_uring rps 1065171 p50us 415 p99us 2700  server cpus 0,2,4,6,8,10,12,14: 99% (min 94, max 100)  client cpus 16-31: 91% (min 87, max 93)
+keepalive=1 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll rps 951625 p50us 463 p99us 3070  server cpus 0,2,4,6,8,10,12,14: 96% (min 87, max 99)  client cpus 16-31: 88% (min 82, max 91)

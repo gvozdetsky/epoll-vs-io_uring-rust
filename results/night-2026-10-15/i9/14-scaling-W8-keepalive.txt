@@ -1,0 +1,46 @@
+# scaling-W8-keepalive on i9, 2026-10-15 01:37:46
+# WORKERS=8 SERVER_CPUS=0,2,4,6,8,10,12,14 CLIENT_CPUS=16-31 WRK_THREADS=16 WRK_CONNS=512
+=== keepalive=1 tokio vs monoio:uring
+# A=monoio:uring B=tokio url=http://127.0.0.1:18080/ conf=generated pairs=8 duration=10s keepalive=1 workers=8 server_cpus=0,2,4,6,8,10,12,14 client_cpus=16-31 wrk=-t16/-c512
+pair 0 A 1307610.61 p50 194 p99 397 | B 1367934.09 p50 189 p99 382 | B/A 104.61%
+pair 1 A 1312784.91 p50 194 p99 395 | B 1361863.89 p50 190 p99 385 | B/A 103.74%
+pair 2 A 1331543.06 p50 205 p99 2420 | B 1370468.52 p50 188 p99 384 | B/A 102.92%
+pair 3 A 1389350.58 p50 256 p99 3130 | B 1368926.03 p50 189 p99 382 | B/A 98.53%
+pair 4 A 1305854.65 p50 195 p99 398 | B 1367139.32 p50 188 p99 384 | B/A 104.69%
+pair 5 A 1305790.82 p50 196 p99 398 | B 1366845.72 p50 189 p99 383 | B/A 104.68%
+pair 6 A 1302204.24 p50 196 p99 399 | B 1371887.75 p50 189 p99 382 | B/A 105.35%
+pair 7 A 1303274.47 p50 196 p99 398 | B 1359675.59 p50 189 p99 385 | B/A 104.33%
+RESULT tokio / monoio:uring: 103.6% (min 98.5, max 105.3; 8 pairs)  p50 us A 196 B 189  p99 us A 398 B 383
+=== keepalive=1 monoio:legacy vs monoio:uring
+# A=monoio:uring B=monoio:legacy url=http://127.0.0.1:18080/ conf=generated pairs=8 duration=10s keepalive=1 workers=8 server_cpus=0,2,4,6,8,10,12,14 client_cpus=16-31 wrk=-t16/-c512
+pair 0 A 1309987.47 p50 195 p99 403 | B 1361127.02 p50 189 p99 386 | B/A 103.90%
+pair 1 A 1387638.18 p50 248 p99 3010 | B 1378272.40 p50 220 p99 2940 | B/A 99.33%
+pair 2 A 1306079.08 p50 196 p99 397 | B 1403938.96 p50 289 p99 3260 | B/A 107.49%
+pair 3 A 1322030.97 p50 201 p99 2000 | B 1376525.19 p50 200 p99 2650 | B/A 104.12%
+pair 4 A 1407985.30 p50 274 p99 3200 | B 1359793.08 p50 190 p99 392 | B/A 96.58%
+pair 5 A 1305009.46 p50 195 p99 398 | B 1359977.49 p50 189 p99 387 | B/A 104.21%
+pair 6 A 1325365.43 p50 190 p99 396 | B 1360370.28 p50 189 p99 386 | B/A 102.64%
+pair 7 A 1355937.21 p50 262 p99 3270 | B 1365094.31 p50 189 p99 390 | B/A 100.68%
+RESULT monoio:legacy / monoio:uring: 102.3% (min 96.6, max 107.5; 8 pairs)  p50 us A 198 B 189  p99 us A 1201 B 391
+=== keepalive=1 compio:uring vs monoio:uring
+# A=monoio:uring B=compio:uring url=http://127.0.0.1:18080/ conf=generated pairs=8 duration=10s keepalive=1 workers=8 server_cpus=0,2,4,6,8,10,12,14 client_cpus=16-31 wrk=-t16/-c512
+pair 0 A 1310262.57 p50 194 p99 399 | B 1349340.66 p50 285 p99 3190 | B/A 102.98%
+pair 1 A 1312729.27 p50 193 p99 395 | B 1315419.54 p50 289 p99 2940 | B/A 100.20%
+pair 2 A 1320745.14 p50 198 p99 700 | B 1358363.47 p50 314 p99 456 | B/A 102.85%
+pair 3 A 1309784.77 p50 195 p99 398 | B 1290718.29 p50 194 p99 409 | B/A 98.54%
+pair 4 A 1335296.91 p50 205 p99 2440 | B 1309068.16 p50 189 p99 400 | B/A 98.04%
+pair 5 A 1315802.90 p50 193 p99 396 | B 1298022.01 p50 192 p99 406 | B/A 98.65%
+pair 6 A 1308937.53 p50 194 p99 396 | B 1313258.93 p50 187 p99 397 | B/A 100.33%
+pair 7 A 1305405.87 p50 196 p99 398 | B 1347165.85 p50 317 p99 376 | B/A 103.20%
+RESULT compio:uring / monoio:uring: 100.6% (min 98.0, max 103.2; 8 pairs)  p50 us A 194 B 239  p99 us A 398 B 407
+=== keepalive=1 nginx=/usr/sbin/nginx vs monoio:uring
+# A=monoio:uring B=nginx=/usr/sbin/nginx url=http://127.0.0.1:18080/ conf=generated pairs=8 duration=10s keepalive=1 workers=8 server_cpus=0,2,4,6,8,10,12,14 client_cpus=16-31 wrk=-t16/-c512
+pair 0 A 1310698.32 p50 194 p99 397 | B 1255463.02 p50 395 p99 492 | B/A 95.79%
+pair 1 A 1335895.04 p50 187 p99 392 | B 1248577.81 p50 400 p99 464 | B/A 93.46%
+pair 2 A 1306781.78 p50 196 p99 398 | B 1279360.40 p50 361 p99 515 | B/A 97.90%
+pair 3 A 1303146.10 p50 196 p99 399 | B 1273860.45 p50 381 p99 459 | B/A 97.75%
+pair 4 A 1393220.13 p50 257 p99 3220 | B 1275862.55 p50 377 p99 460 | B/A 91.58%
+pair 5 A 1314223.73 p50 192 p99 395 | B 1277636.58 p50 389 p99 470 | B/A 97.22%
+pair 6 A 1306939.92 p50 196 p99 397 | B 1276239.17 p50 362 p99 554 | B/A 97.65%
+pair 7 A 1326371.81 p50 199 p99 1780 | B 1280858.43 p50 370 p99 472 | B/A 96.57%
+RESULT nginx=/usr/sbin/nginx / monoio:uring: 96.0% (min 91.6, max 97.9; 8 pairs)  p50 us A 196 B 379  p99 us A 397 B 471

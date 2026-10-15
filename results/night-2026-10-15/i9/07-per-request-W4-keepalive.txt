@@ -1,0 +1,62 @@
+# per-request-W4-keepalive on i9, 2026-10-14 23:43:55
+# WORKERS=4 SERVER_CPUS=0,2,4,6 CLIENT_CPUS=8-31 WRK_THREADS=16 WRK_CONNS=512
+round=1 keepalive=1 monoio:uring instr/req user 2158 kernel 17595 total 19753  cycles/req 11150  ctxsw/req 0.000
+round=1 keepalive=1 monoio:uring syscalls/req (4822494 requests): io_uring_enter 0.016  total 0.016
+round=1 keepalive=1 compio:uring instr/req user 5280 kernel 18672 total 23951  cycles/req 12555  ctxsw/req 0.000
+round=1 keepalive=1 compio:uring syscalls/req (4087360 requests): io_uring_enter 0.033  total 0.033
+round=1 keepalive=1 tokio instr/req user 1610 kernel 17255 total 18866  cycles/req 12450  ctxsw/req 0.000
+round=1 keepalive=1 tokio syscalls/req (639111 requests): epoll_wait 0.016 sendto 1.001 recvfrom 1.002  total 2.024
+round=1 keepalive=1 tokio-mt instr/req user 1734 kernel 17330 total 19064  cycles/req 13422  ctxsw/req 0.000
+round=1 keepalive=1 tokio-mt syscalls/req (639313 requests): epoll_wait 0.016 sendto 1.001 recvfrom 1.002  total 2.024
+round=1 keepalive=1 tokio-uring instr/req user 2486 kernel 18715 total 21201  cycles/req 11635  ctxsw/req 0.000
+round=1 keepalive=1 tokio-uring syscalls/req (3899614 requests): epoll_wait 0.043 io_uring_enter 0.016  total 0.059
+round=1 keepalive=1 monoio:legacy instr/req user 1552 kernel 18318 total 19869  cycles/req 13156  ctxsw/req 0.000
+round=1 keepalive=1 monoio:legacy syscalls/req (637968 requests): sendto 1.001 recvfrom 1.009 (0.008 failed)  total 2.015
+round=1 keepalive=1 compio:poll instr/req user 5613 kernel 23483 total 29096  cycles/req 18421  ctxsw/req 0.000
+round=1 keepalive=1 compio:poll syscalls/req (622895 requests): epoll_ctl 0.012 sendto 1.001 recvfrom 1.007 (0.006 failed)  total 2.024
+round=1 keepalive=1 nginx=/usr/sbin/nginx instr/req user 7629 kernel 17993 total 25622  cycles/req 15327  ctxsw/req 0.000
+round=1 keepalive=1 nginx=/usr/sbin/nginx syscalls/req (675466 requests): epoll_wait 0.008 writev 1.001 recvfrom 1.001  total 2.014
+round=1 keepalive=1 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:io_uring instr/req user 10482 kernel 17795 total 28277  cycles/req 15045  ctxsw/req 0.000
+round=1 keepalive=1 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:io_uring syscalls/req (3691956 requests): io_uring_enter 0.016  total 0.017
+round=1 keepalive=1 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll instr/req user 9610 kernel 18310 total 27919  cycles/req 16979  ctxsw/req 0.000
+round=1 keepalive=1 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll syscalls/req (611092 requests): sendto 1.001 recvfrom 1.009 (0.009 failed)  total 2.019
+round=2 keepalive=1 monoio:uring instr/req user 2158 kernel 17604 total 19761  cycles/req 11205  ctxsw/req 0.000
+round=2 keepalive=1 monoio:uring syscalls/req (4873844 requests): io_uring_enter 0.016  total 0.017
+round=2 keepalive=1 compio:uring instr/req user 5280 kernel 18678 total 23958  cycles/req 12530  ctxsw/req 0.000
+round=2 keepalive=1 compio:uring syscalls/req (3918427 requests): io_uring_enter 0.033  total 0.033
+round=2 keepalive=1 tokio instr/req user 1610 kernel 17263 total 18873  cycles/req 12464  ctxsw/req 0.000
+round=2 keepalive=1 tokio syscalls/req (613180 requests): epoll_wait 0.016 sendto 1.001 recvfrom 1.002  total 2.025
+round=2 keepalive=1 tokio-mt instr/req user 1735 kernel 17341 total 19076  cycles/req 13445  ctxsw/req 0.000
+round=2 keepalive=1 tokio-mt syscalls/req (623390 requests): epoll_wait 0.016 sendto 1.001 recvfrom 1.002  total 2.024
+round=2 keepalive=1 tokio-uring instr/req user 2491 kernel 18713 total 21204  cycles/req 11605  ctxsw/req 0.000
+round=2 keepalive=1 tokio-uring syscalls/req (4032942 requests): epoll_wait 0.043 io_uring_enter 0.016  total 0.059
+round=2 keepalive=1 monoio:legacy instr/req user 1551 kernel 18316 total 19867  cycles/req 13187  ctxsw/req 0.000
+round=2 keepalive=1 monoio:legacy syscalls/req (637421 requests): sendto 1.001 recvfrom 1.008 (0.007 failed)  total 2.014
+round=2 keepalive=1 compio:poll instr/req user 5614 kernel 23504 total 29118  cycles/req 18377  ctxsw/req 0.000
+round=2 keepalive=1 compio:poll syscalls/req (619749 requests): epoll_ctl 0.010 sendto 1.001 recvfrom 1.007 (0.006 failed)  total 2.021
+round=2 keepalive=1 nginx=/usr/sbin/nginx instr/req user 7654 kernel 17997 total 25650  cycles/req 15301  ctxsw/req 0.000
+round=2 keepalive=1 nginx=/usr/sbin/nginx syscalls/req (686472 requests): epoll_wait 0.008 writev 1.001 recvfrom 1.001  total 2.014
+round=2 keepalive=1 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:io_uring instr/req user 10500 kernel 17774 total 28273  cycles/req 14932  ctxsw/req 0.000
+round=2 keepalive=1 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:io_uring syscalls/req (3706846 requests): io_uring_enter 0.016  total 0.017
+round=2 keepalive=1 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll instr/req user 9609 kernel 18288 total 27897  cycles/req 16912  ctxsw/req 0.000
+round=2 keepalive=1 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll syscalls/req (612482 requests): sendto 1.001 recvfrom 1.008 (0.007 failed)  total 2.017
+round=3 keepalive=1 monoio:uring instr/req user 2158 kernel 17591 total 19749  cycles/req 11152  ctxsw/req 0.000
+round=3 keepalive=1 monoio:uring syscalls/req (4884048 requests): io_uring_enter 0.016  total 0.016
+round=3 keepalive=1 compio:uring instr/req user 5277 kernel 18647 total 23924  cycles/req 12516  ctxsw/req 0.000
+round=3 keepalive=1 compio:uring syscalls/req (3917260 requests): io_uring_enter 0.033  total 0.033
+round=3 keepalive=1 tokio instr/req user 1610 kernel 17246 total 18857  cycles/req 12452  ctxsw/req 0.000
+round=3 keepalive=1 tokio syscalls/req (626962 requests): epoll_wait 0.016 sendto 1.001 recvfrom 1.002  total 2.025
+round=3 keepalive=1 tokio-mt instr/req user 1736 kernel 17335 total 19071  cycles/req 13439  ctxsw/req 0.000
+round=3 keepalive=1 tokio-mt syscalls/req (649419 requests): epoll_wait 0.016 sendto 1.001 recvfrom 1.002  total 2.023
+round=3 keepalive=1 tokio-uring instr/req user 2493 kernel 18713 total 21206  cycles/req 11585  ctxsw/req 0.000
+round=3 keepalive=1 tokio-uring syscalls/req (3950177 requests): epoll_wait 0.043 io_uring_enter 0.016  total 0.059
+round=3 keepalive=1 monoio:legacy instr/req user 1550 kernel 18281 total 19831  cycles/req 13175  ctxsw/req 0.000
+round=3 keepalive=1 monoio:legacy syscalls/req (628315 requests): sendto 1.001 recvfrom 1.007 (0.006 failed)  total 2.014
+round=3 keepalive=1 compio:poll instr/req user 5592 kernel 23479 total 29071  cycles/req 18420  ctxsw/req 0.000
+round=3 keepalive=1 compio:poll syscalls/req (621003 requests): epoll_ctl 0.016 sendto 1.001 recvfrom 1.010 (0.009 failed)  total 2.031
+round=3 keepalive=1 nginx=/usr/sbin/nginx instr/req user 7650 kernel 17973 total 25623  cycles/req 15397  ctxsw/req 0.000
+round=3 keepalive=1 nginx=/usr/sbin/nginx syscalls/req (660732 requests): epoll_wait 0.008 writev 1.001 recvfrom 1.002  total 2.014
+round=3 keepalive=1 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:io_uring instr/req user 10463 kernel 17802 total 28265  cycles/req 15138  ctxsw/req 0.000
+round=3 keepalive=1 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:io_uring syscalls/req (3742866 requests): io_uring_enter 0.016  total 0.017
+round=3 keepalive=1 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll instr/req user 9606 kernel 18280 total 27886  cycles/req 16905  ctxsw/req 0.000
+round=3 keepalive=1 ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll syscalls/req (597645 requests): sendto 1.001 recvfrom 1.006  total 2.015

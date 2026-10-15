@@ -1,0 +1,12 @@
+# util-L3 on i7, 2026-10-14 21:48:37
+# WORKERS=3 SERVER_CPUS=0,1,2 CLIENT_CPUS=3,4,5,9,10,11 WRK_THREADS=6 WRK_CONNS=512
+keepalive=1 monoio:uring rps 341109 p50us 754 p99us 1490  server cpus 0,1,2: 91% (min 87, max 94)  client cpus 3,4,5,9,10,11: 100% (min 100, max 100)
+keepalive=1 compio:uring rps 333724 p50us 765 p99us 1530  server cpus 0,1,2: 95% (min 92, max 97)  client cpus 3,4,5,9,10,11: 100% (min 100, max 100)
+keepalive=1 tokio rps 342988 p50us 747 p99us 1470  server cpus 0,1,2: 93% (min 92, max 94)  client cpus 3,4,5,9,10,11: 100% (min 100, max 100)
+keepalive=1 tokio-mt rps 334714 p50us 749 p99us 1540  server cpus 0,1,2: 95% (min 94, max 95)  client cpus 3,4,5,9,10,11: 100% (min 100, max 100)
+keepalive=1 tokio-uring rps 336284 p50us 757 p99us 1520  server cpus 0,1,2: 98% (min 98, max 99)  client cpus 3,4,5,9,10,11: 100% (min 100, max 100)
+keepalive=1 monoio:legacy rps 338445 p50us 748 p99us 1510  server cpus 0,1,2: 98% (min 96, max 99)  client cpus 3,4,5,9,10,11: 100% (min 100, max 100)
+keepalive=1 compio:poll rps 232731 p50us 2180 p99us 2390  server cpus 0,1,2: 100% (min 100, max 100)  client cpus 3,4,5,9,10,11: 83% (min 82, max 84)
+keepalive=1 nginx=/usr/sbin/nginx rps 290316 p50us 1740 p99us 1870  server cpus 0,1,2: 100% (min 100, max 100)  client cpus 3,4,5,9,10,11: 99% (min 99, max 99)
+keepalive=1 ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring rps 351215 p50us 1230 p99us 1460  server cpus 0,1,2: 100% (min 100, max 100)  client cpus 3,4,5,9,10,11: 100% (min 100, max 100)
+keepalive=1 ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll rps 256917 p50us 1920 p99us 2170  server cpus 0,1,2: 100% (min 100, max 100)  client cpus 3,4,5,9,10,11: 94% (min 94, max 95)

@@ -1,0 +1,46 @@
+# scaling-W2-keepalive on i9, 2026-10-15 01:16:20
+# WORKERS=2 SERVER_CPUS=0,2 CLIENT_CPUS=8-31 WRK_THREADS=16 WRK_CONNS=512
+=== keepalive=1 tokio vs monoio:uring
+# A=monoio:uring B=tokio url=http://127.0.0.1:18080/ conf=generated pairs=8 duration=10s keepalive=1 workers=2 server_cpus=0,2 client_cpus=8-31 wrk=-t16/-c512
+pair 0 A 642188.82 p50 793 p99 823 | B 599451.68 p50 850 p99 870 | B/A 93.35%
+pair 1 A 645265.43 p50 782 p99 835 | B 600781.88 p50 787 p99 950 | B/A 93.11%
+pair 2 A 656129.64 p50 745 p99 880 | B 579630.07 p50 880 p99 980 | B/A 88.34%
+pair 3 A 643177.24 p50 805 p99 920 | B 575579.74 p50 890 p99 1020 | B/A 89.49%
+pair 4 A 645732.33 p50 797 p99 890 | B 574036.33 p50 880 p99 990 | B/A 88.90%
+pair 5 A 563349.83 p50 910 p99 930 | B 573418.13 p50 870 p99 970 | B/A 101.79%
+pair 6 A 654207.52 p50 776 p99 822 | B 578418.88 p50 870 p99 960 | B/A 88.42%
+pair 7 A 606108.54 p50 742 p99 1000 | B 577603.66 p50 880 p99 970 | B/A 95.30%
+RESULT tokio / monoio:uring: 92.2% (min 88.3, max 101.8; 8 pairs)  p50 us A 787 B 875  p99 us A 885 B 970
+=== keepalive=1 monoio:legacy vs monoio:uring
+# A=monoio:uring B=monoio:legacy url=http://127.0.0.1:18080/ conf=generated pairs=8 duration=10s keepalive=1 workers=2 server_cpus=0,2 client_cpus=8-31 wrk=-t16/-c512
+pair 0 A 657752.50 p50 773 p99 806 | B 561895.67 p50 910 p99 960 | B/A 85.43%
+pair 1 A 649035.65 p50 785 p99 860 | B 558714.66 p50 880 p99 1070 | B/A 86.08%
+pair 2 A 647922.06 p50 774 p99 930 | B 556592.47 p50 920 p99 1070 | B/A 85.90%
+pair 3 A 659429.95 p50 772 p99 799 | B 560610.65 p50 900 p99 990 | B/A 85.01%
+pair 4 A 647966.86 p50 788 p99 808 | B 557768.87 p50 930 p99 1030 | B/A 86.08%
+pair 5 A 607192.26 p50 743 p99 1000 | B 557204.70 p50 920 p99 1070 | B/A 91.77%
+pair 6 A 657827.19 p50 768 p99 822 | B 564816.43 p50 890 p99 970 | B/A 85.86%
+pair 7 A 652252.49 p50 779 p99 850 | B 561929.90 p50 920 p99 1000 | B/A 86.15%
+RESULT monoio:legacy / monoio:uring: 86.5% (min 85.0, max 91.8; 8 pairs)  p50 us A 773 B 915  p99 us A 836 B 1015
+=== keepalive=1 compio:uring vs monoio:uring
+# A=monoio:uring B=compio:uring url=http://127.0.0.1:18080/ conf=generated pairs=8 duration=10s keepalive=1 workers=2 server_cpus=0,2 client_cpus=8-31 wrk=-t16/-c512
+pair 0 A 639201.79 p50 790 p99 880 | B 579166.35 p50 890 p99 980 | B/A 90.61%
+pair 1 A 654927.58 p50 778 p99 816 | B 580563.12 p50 880 p99 950 | B/A 88.65%
+pair 2 A 652174.27 p50 778 p99 836 | B 573746.28 p50 880 p99 980 | B/A 87.97%
+pair 3 A 658090.07 p50 766 p99 822 | B 571995.69 p50 900 p99 990 | B/A 86.92%
+pair 4 A 623623.11 p50 831 p99 930 | B 571073.08 p50 900 p99 1000 | B/A 91.57%
+pair 5 A 662943.74 p50 768 p99 792 | B 536542.24 p50 822 p99 1160 | B/A 80.93%
+pair 6 A 657463.74 p50 727 p99 880 | B 499066.60 p50 1030 p99 1070 | B/A 75.91%
+pair 7 A 644979.04 p50 776 p99 846 | B 577145.58 p50 880 p99 920 | B/A 89.48%
+RESULT compio:uring / monoio:uring: 86.4% (min 75.9, max 91.6; 8 pairs)  p50 us A 777 B 885  p99 us A 841 B 985
+=== keepalive=1 nginx=/usr/sbin/nginx vs monoio:uring
+# A=monoio:uring B=nginx=/usr/sbin/nginx url=http://127.0.0.1:18080/ conf=generated pairs=8 duration=10s keepalive=1 workers=2 server_cpus=0,2 client_cpus=8-31 wrk=-t16/-c512
+pair 0 A 642758.73 p50 803 p99 920 | B 488388.89 p50 940 p99 1200 | B/A 75.98%
+pair 1 A 653291.70 p50 777 p99 822 | B 490831.37 p50 1040 p99 1090 | B/A 75.13%
+pair 2 A 657075.11 p50 744 p99 860 | B 490132.68 p50 1010 p99 1110 | B/A 74.59%
+pair 3 A 640850.08 p50 743 p99 880 | B 491038.25 p50 1040 p99 1080 | B/A 76.62%
+pair 4 A 654500.05 p50 772 p99 833 | B 494379.25 p50 1030 p99 1070 | B/A 75.54%
+pair 5 A 650710.05 p50 781 p99 816 | B 492992.08 p50 1040 p99 1080 | B/A 75.76%
+pair 6 A 606858.37 p50 757 p99 980 | B 459713.23 p50 1020 p99 1260 | B/A 75.75%
+pair 7 A 609081.72 p50 837 p99 860 | B 460182.64 p50 1060 p99 1200 | B/A 75.55%
+RESULT nginx=/usr/sbin/nginx / monoio:uring: 75.6% (min 74.6, max 76.6; 8 pairs)  p50 us A 774 B 1035  p99 us A 860 B 1100

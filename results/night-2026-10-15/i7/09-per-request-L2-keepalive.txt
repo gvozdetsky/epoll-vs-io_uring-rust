@@ -1,0 +1,62 @@
+# per-request-L2-keepalive on i7, 2026-10-14 23:47:45
+# WORKERS=2 SERVER_CPUS=0,1 CLIENT_CPUS=2,3,4,5,8,9,10,11 WRK_THREADS=8 WRK_CONNS=512
+round=1 keepalive=1 monoio:uring instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=1 keepalive=1 monoio:uring syscalls/req (1592921 requests): io_uring_enter 0.008  total 0.009
+round=1 keepalive=1 compio:uring instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=1 keepalive=1 compio:uring syscalls/req (1140235 requests): io_uring_enter 0.033  total 0.034
+round=1 keepalive=1 tokio instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=1 keepalive=1 tokio syscalls/req (172219 requests): epoll_wait 0.017 sendto 1.003 recvfrom 1.005  total 2.043
+round=1 keepalive=1 tokio-mt instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=1 keepalive=1 tokio-mt syscalls/req (153666 requests): epoll_ctl 0.006 epoll_wait 0.017 sendto 1.003 recvfrom 1.006  total 2.046
+round=1 keepalive=1 tokio-uring instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=1 keepalive=1 tokio-uring syscalls/req (1186591 requests): epoll_wait 0.039 io_uring_enter 0.008  total 0.049
+round=1 keepalive=1 monoio:legacy instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=1 keepalive=1 monoio:legacy syscalls/req (173054 requests): epoll_ctl 0.005 sendto 1.003 recvfrom 1.012 (0.009 failed)  total 2.035
+round=1 keepalive=1 compio:poll instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=1 keepalive=1 compio:poll syscalls/req (130426 requests): epoll_ctl 0.016 sendto 1.004 recvfrom 1.016 (0.011 failed)  total 2.054
+round=1 keepalive=1 nginx=/usr/sbin/nginx instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=1 keepalive=1 nginx=/usr/sbin/nginx syscalls/req (158722 requests): epoll_wait 0.006 writev 1.003 recvfrom 1.006  total 2.030
+round=1 keepalive=1 ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=1 keepalive=1 ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring syscalls/req (1142112 requests): io_uring_enter 0.008  total 0.011
+round=1 keepalive=1 ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=1 keepalive=1 ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll syscalls/req (161982 requests): epoll_ctl 0.006 mprotect 0.010 sendto 1.003 recvfrom 1.013 (0.010 failed)  total 2.047
+round=2 keepalive=1 monoio:uring instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=2 keepalive=1 monoio:uring syscalls/req (1595330 requests): io_uring_enter 0.008  total 0.009
+round=2 keepalive=1 compio:uring instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=2 keepalive=1 compio:uring syscalls/req (1140775 requests): io_uring_enter 0.033  total 0.034
+round=2 keepalive=1 tokio instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=2 keepalive=1 tokio syscalls/req (161574 requests): epoll_ctl 0.005 epoll_wait 0.017 sendto 1.003 recvfrom 1.005  total 2.044
+round=2 keepalive=1 tokio-mt instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=2 keepalive=1 tokio-mt syscalls/req (135804 requests): epoll_ctl 0.006 epoll_wait 0.017 sendto 1.003 recvfrom 1.005  total 2.047
+round=2 keepalive=1 tokio-uring instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=2 keepalive=1 tokio-uring syscalls/req (1223642 requests): epoll_wait 0.035 io_uring_enter 0.008  total 0.045
+round=2 keepalive=1 monoio:legacy instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=2 keepalive=1 monoio:legacy syscalls/req (176174 requests): epoll_ctl 0.005 sendto 1.003 recvfrom 1.014 (0.011 failed)  total 2.036
+round=2 keepalive=1 compio:poll instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=2 keepalive=1 compio:poll syscalls/req (157338 requests): epoll_ctl 0.029 sendto 1.003 recvfrom 1.020 (0.017 failed)  total 2.068
+round=2 keepalive=1 nginx=/usr/sbin/nginx instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=2 keepalive=1 nginx=/usr/sbin/nginx syscalls/req (159242 requests): epoll_wait 0.006 writev 1.003 recvfrom 1.006  total 2.030
+round=2 keepalive=1 ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=2 keepalive=1 ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring syscalls/req (1145407 requests): io_uring_enter 0.008  total 0.011
+round=2 keepalive=1 ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=2 keepalive=1 ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll syscalls/req (163953 requests): epoll_ctl 0.006 mprotect 0.010 sendto 1.003 recvfrom 1.013 (0.010 failed)  total 2.047
+round=3 keepalive=1 monoio:uring instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=3 keepalive=1 monoio:uring syscalls/req (1583484 requests): io_uring_enter 0.009  total 0.010
+round=3 keepalive=1 compio:uring instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=3 keepalive=1 compio:uring syscalls/req (1137033 requests): io_uring_enter 0.033  total 0.034
+round=3 keepalive=1 tokio instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=3 keepalive=1 tokio syscalls/req (172733 requests): epoll_ctl 0.005 epoll_wait 0.017 sendto 1.003 recvfrom 1.005  total 2.043
+round=3 keepalive=1 tokio-mt instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=3 keepalive=1 tokio-mt syscalls/req (167981 requests): epoll_ctl 0.005 epoll_wait 0.017 sendto 1.003 recvfrom 1.005  total 2.045
+round=3 keepalive=1 tokio-uring instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=3 keepalive=1 tokio-uring syscalls/req (1184473 requests): epoll_wait 0.039 io_uring_enter 0.008  total 0.049
+round=3 keepalive=1 monoio:legacy instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=3 keepalive=1 monoio:legacy syscalls/req (172824 requests): epoll_ctl 0.005 sendto 1.003 recvfrom 1.013 (0.010 failed)  total 2.036
+round=3 keepalive=1 compio:poll instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=3 keepalive=1 compio:poll syscalls/req (143054 requests): epoll_ctl 0.024 sendto 1.003 recvfrom 1.019 (0.014 failed)  total 2.061
+round=3 keepalive=1 nginx=/usr/sbin/nginx instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=3 keepalive=1 nginx=/usr/sbin/nginx syscalls/req (153781 requests): epoll_wait 0.006 writev 1.003 recvfrom 1.007  total 2.031
+round=3 keepalive=1 ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=3 keepalive=1 ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring syscalls/req (1137515 requests): io_uring_enter 0.008  total 0.011
+round=3 keepalive=1 ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll instr/req: perf unavailable (Error: No supported events found. Access to performance monitoring and observability operations is limited. Consider adj)
+round=3 keepalive=1 ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll syscalls/req (162959 requests): mprotect 0.005 sendto 1.002 recvfrom 1.005  total 2.029

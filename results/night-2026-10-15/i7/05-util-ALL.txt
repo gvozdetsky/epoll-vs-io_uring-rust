@@ -1,0 +1,52 @@
+# util-ALL on i7, 2026-10-14 21:53:41
+# WORKERS=12 SERVER_CPUS=0-11 CLIENT_CPUS=0-11 WRK_THREADS=16 WRK_CONNS=512
+Traceback (most recent call last):
+  File "<stdin>", line 32, in <module>
+  File "<stdin>", line 28, in share
+ZeroDivisionError: division by zero
+FAILED monoio:uring
+Traceback (most recent call last):
+  File "<stdin>", line 32, in <module>
+  File "<stdin>", line 28, in share
+ZeroDivisionError: division by zero
+FAILED compio:uring
+Traceback (most recent call last):
+  File "<stdin>", line 32, in <module>
+  File "<stdin>", line 28, in share
+ZeroDivisionError: division by zero
+FAILED tokio
+Traceback (most recent call last):
+  File "<stdin>", line 32, in <module>
+  File "<stdin>", line 28, in share
+ZeroDivisionError: division by zero
+FAILED tokio-mt
+Traceback (most recent call last):
+  File "<stdin>", line 32, in <module>
+  File "<stdin>", line 28, in share
+ZeroDivisionError: division by zero
+FAILED tokio-uring
+Traceback (most recent call last):
+  File "<stdin>", line 32, in <module>
+  File "<stdin>", line 28, in share
+ZeroDivisionError: division by zero
+FAILED monoio:legacy
+Traceback (most recent call last):
+  File "<stdin>", line 32, in <module>
+  File "<stdin>", line 28, in share
+ZeroDivisionError: division by zero
+FAILED compio:poll
+Traceback (most recent call last):
+  File "<stdin>", line 32, in <module>
+  File "<stdin>", line 28, in share
+ZeroDivisionError: division by zero
+FAILED nginx=/usr/sbin/nginx
+Traceback (most recent call last):
+  File "<stdin>", line 32, in <module>
+  File "<stdin>", line 28, in share
+ZeroDivisionError: division by zero
+FAILED ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring
+Traceback (most recent call last):
+  File "<stdin>", line 32, in <module>
+  File "<stdin>", line 28, in share
+ZeroDivisionError: division by zero
+FAILED ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:epoll

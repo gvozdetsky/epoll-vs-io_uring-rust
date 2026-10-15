@@ -1,0 +1,59 @@
+# ruxen-W4-epoll-vs-nginx on i9, 2026-10-15 00:28:00
+# WORKERS=4 SERVER_CPUS=0,2,4,6 CLIENT_CPUS=8-31 WRK_THREADS=16 WRK_CONNS=512
+=== ruxen m1_hello: ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll vs nginx=/usr/sbin/nginx
+# A=nginx=/usr/sbin/nginx B=ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll url=http://127.0.0.1:8080/ conf=/home/eugene/articles/epoll-vs-io_uring-rust/bench/ruxen-configs/m1 pairs=8 duration=10s keepalive=1 workers=4 server_cpus=0,2,4,6 client_cpus=8-31 wrk=-t16/-c512
+pair 0 A 789.81 p50 179570 p99 1720000 | B 740.65 p50 192130 p99 1790000 | B/A 93.78%
+pair 1 A 794.21 p50 179230 p99 1170000 | B 788.00 p50 179500 p99 893520 | B/A 99.22%
+pair 2 A 788.28 p50 180150 p99 1720000 | B 769.41 p50 183330 p99 1170000 | B/A 97.61%
+pair 3 A 819.92 p50 173490 p99 1340000 | B 793.55 p50 179000 p99 1320000 | B/A 96.78%
+pair 4 A 816.89 p50 173320 p99 1390000 | B 817.45 p50 173480 p99 1300000 | B/A 100.07%
+pair 5 A 815.60 p50 173320 p99 1250000 | B 819.01 p50 173300 p99 1310000 | B/A 100.42%
+pair 6 A 819.15 p50 173670 p99 1210000 | B 821.62 p50 173200 p99 1330000 | B/A 100.30%
+pair 7 A 822.44 p50 173260 p99 1260000 | B 818.37 p50 173400 p99 970610 | B/A 99.51%
+RESULT ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll / nginx=/usr/sbin/nginx: 98.4% (min 93.8, max 100.4; 8 pairs)  p50 us A 173580 B 176240  p99 us A 1300000 B 1305000
+ERROR: 9936 error responses / timeouts
+FAILED m1_hello
+=== ruxen m1_no_keepalive: ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll vs nginx=/usr/sbin/nginx
+# A=nginx=/usr/sbin/nginx B=ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll url=http://127.0.0.1:8081/ conf=/home/eugene/articles/epoll-vs-io_uring-rust/bench/ruxen-configs/m1_no_keepalive pairs=8 duration=10s keepalive=0 workers=4 server_cpus=0,2,4,6 client_cpus=8-31 wrk=-t16/-c512
+pair 0 A 236715.48 p50 529 p99 6380 | B 151652.57 p50 5350 p99 6760 | B/A 64.07%
+pair 1 A 250674.90 p50 626 p99 5790 | B 181882.99 p50 3530 p99 7430 | B/A 72.56%
+pair 2 A 256006.15 p50 666 p99 5640 | B 195270.76 p50 2900 p99 7540 | B/A 76.28%
+pair 3 A 248858.35 p50 651 p99 6130 | B 209366.07 p50 870 p99 7850 | B/A 84.13%
+pair 4 A 251746.38 p50 803 p99 5340 | B 172245.79 p50 3660 p99 7290 | B/A 68.42%
+pair 5 A 250887.26 p50 766 p99 5860 | B 162598.21 p50 3430 p99 7110 | B/A 64.81%
+pair 6 A 260697.24 p50 747 p99 5260 | B 141463.05 p50 4420 p99 7660 | B/A 54.26%
+pair 7 A 254431.40 p50 753 p99 5410 | B 150613.28 p50 5580 p99 6840 | B/A 59.20%
+RESULT ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll / nginx=/usr/sbin/nginx: 67.4% (min 54.3, max 84.1; 8 pairs)  p50 us A 706 B 3595  p99 us A 5715 B 7360
+=== ruxen proxy_hello: ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll vs nginx=/usr/sbin/nginx
+# A=nginx=/usr/sbin/nginx B=ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll url=http://127.0.0.1:8095/ conf=/home/eugene/articles/epoll-vs-io_uring-rust/bench/ruxen-configs/proxy_pass pairs=8 duration=10s keepalive=1 workers=4 server_cpus=0,2,4,6 client_cpus=8-31 wrk=-t16/-c512
+pair 0 A 277977.75 p50 1860 p99 2310 | B 235435.63 p50 2090 p99 3320 | B/A 84.70%
+pair 1 A 271775.86 p50 1860 p99 2300 | B 233342.99 p50 2160 p99 2990 | B/A 85.86%
+pair 2 A 271099.23 p50 1890 p99 2220 | B 238916.80 p50 2120 p99 3120 | B/A 88.13%
+pair 3 A 275641.88 p50 1880 p99 2100 | B 247763.93 p50 2050 p99 2620 | B/A 89.89%
+pair 4 A 265657.43 p50 1890 p99 2640 | B 237152.39 p50 2200 p99 2900 | B/A 89.27%
+pair 5 A 287298.03 p50 1790 p99 2200 | B 249015.56 p50 2070 p99 2430 | B/A 86.67%
+pair 6 A 275683.48 p50 1860 p99 2220 | B 240392.03 p50 2120 p99 2720 | B/A 87.20%
+pair 7 A 275811.25 p50 1820 p99 2420 | B 230492.04 p50 2230 p99 2930 | B/A 83.57%
+RESULT ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll / nginx=/usr/sbin/nginx: 86.9% (min 83.6, max 89.9; 8 pairs)  p50 us A 1860 B 2120  p99 us A 2260 B 2915
+=== ruxen m3_static_1k: ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll vs nginx=/usr/sbin/nginx
+# A=nginx=/usr/sbin/nginx B=ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll url=http://127.0.0.1:8090/hello.txt conf=/home/eugene/articles/epoll-vs-io_uring-rust/bench/ruxen-configs/m3 pairs=8 duration=10s keepalive=1 workers=4 server_cpus=0,2,4,6 client_cpus=8-31 wrk=-t16/-c512
+pair 0 A 452470.78 p50 1140 p99 1310 | B 447923.65 p50 1170 p99 1230 | B/A 99.00%
+pair 1 A 463840.83 p50 1050 p99 1260 | B 450392.27 p50 1070 p99 1370 | B/A 97.10%
+pair 2 A 463281.42 p50 1000 p99 1310 | B 448755.16 p50 1130 p99 1260 | B/A 96.86%
+pair 3 A 465425.34 p50 970 p99 1370 | B 465605.10 p50 1100 p99 1250 | B/A 100.04%
+pair 4 A 465169.78 p50 1020 p99 1280 | B 448773.73 p50 1110 p99 1340 | B/A 96.48%
+pair 5 A 464459.48 p50 1110 p99 1220 | B 439472.50 p50 1140 p99 1300 | B/A 94.62%
+pair 6 A 468083.03 p50 1130 p99 1260 | B 457941.59 p50 1120 p99 1230 | B/A 97.83%
+pair 7 A 479589.84 p50 1050 p99 1230 | B 454818.14 p50 1030 p99 1380 | B/A 94.83%
+RESULT ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll / nginx=/usr/sbin/nginx: 97.1% (min 94.6, max 100.0; 8 pairs)  p50 us A 1050 B 1115  p99 us A 1270 B 1280
+=== ruxen tls_hello: ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll vs nginx=/usr/sbin/nginx
+# A=nginx=/usr/sbin/nginx B=ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll url=https://127.0.0.1:8443/ conf=/home/eugene/articles/epoll-vs-io_uring-rust/bench/ruxen-configs/tls pairs=8 duration=10s keepalive=1 workers=4 server_cpus=0,2,4,6 client_cpus=8-31 wrk=-t16/-c512
+pair 0 A 493917.70 p50 990 p99 1210 | B 543192.17 p50 930 p99 1050 | B/A 109.98%
+pair 1 A 493426.77 p50 1010 p99 1140 | B 544913.86 p50 920 p99 1040 | B/A 110.43%
+pair 2 A 492186.17 p50 1020 p99 1140 | B 545312.54 p50 920 p99 1030 | B/A 110.79%
+pair 3 A 495410.84 p50 1020 p99 1110 | B 544668.01 p50 890 p99 1140 | B/A 109.94%
+pair 4 A 494813.38 p50 1070 p99 1150 | B 540797.30 p50 940 p99 1030 | B/A 109.29%
+pair 5 A 484791.16 p50 1020 p99 1260 | B 544036.58 p50 930 p99 1120 | B/A 112.22%
+pair 6 A 492450.64 p50 1040 p99 1170 | B 543516.87 p50 940 p99 1090 | B/A 110.37%
+pair 7 A 492764.32 p50 1050 p99 1170 | B 544007.51 p50 960 p99 1050 | B/A 110.40%
+RESULT ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll / nginx=/usr/sbin/nginx: 110.4% (min 109.3, max 112.2; 8 pairs)  p50 us A 1020 B 930  p99 us A 1160 B 1050

@@ -1,0 +1,18 @@
+monoio:uring instr/req user 2157 kernel 17617 total 19774  cycles/req 12633  ctxsw/req 0.000
+monoio:uring syscalls/req (4096801 requests): io_uring_enter 0.016  total 0.016
+monoio:legacy instr/req user 1568 kernel 18571 total 20139  cycles/req 14987  ctxsw/req 0.000
+monoio:legacy syscalls/req (656449 requests): sendto 1.001 recvfrom 1.030 (0.030 failed)  total 2.037
+compio:uring instr/req user 5268 kernel 18665 total 23934  cycles/req 12918  ctxsw/req 0.000
+compio:uring syscalls/req (3467779 requests): io_uring_enter 0.033  total 0.033
+compio:poll instr/req user 5599 kernel 23524 total 29123  cycles/req 19449  ctxsw/req 0.000
+compio:poll syscalls/req (617420 requests): epoll_ctl 0.037 sendto 1.001 recvfrom 1.020 (0.019 failed)  total 2.062
+tokio instr/req user 1611 kernel 17397 total 19008  cycles/req 15040  ctxsw/req 0.000
+tokio syscalls/req (587199 requests): epoll_wait 0.017 sendto 1.001 recvfrom 1.002  total 2.025
+tokio-uring instr/req user 2494 kernel 18868 total 21362  cycles/req 11973  ctxsw/req 0.000
+tokio-uring syscalls/req (2371879 requests): epoll_wait 0.039 io_uring_enter 0.016  total 0.056
+tokio-mt instr/req user 1737 kernel 17609 total 19346  cycles/req 15691  ctxsw/req 0.000
+tokio-mt syscalls/req (526333 requests): epoll_wait 0.016 sendto 1.001 recvfrom 1.002  total 2.025
+ruxen=/tmp/epbench/ruxen-5d097ae:io_uring instr/req user 10353 kernel 17773 total 28126  cycles/req 15913  ctxsw/req 0.001
+ruxen=/tmp/epbench/ruxen-5d097ae:io_uring syscalls/req (3263392 requests): io_uring_enter 0.016  total 0.017
+ruxen=/tmp/epbench/ruxen-5d097ae:epoll instr/req user 9474 kernel 18395 total 27869  cycles/req 18759  ctxsw/req 0.001
+ruxen=/tmp/epbench/ruxen-5d097ae:epoll syscalls/req (615355 requests): sendto 1.001 recvfrom 1.025 (0.024 failed)  total 2.035

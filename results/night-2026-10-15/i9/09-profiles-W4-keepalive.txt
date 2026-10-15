@@ -1,0 +1,458 @@
+# profiles-W4-keepalive on i9, 2026-10-14 23:57:42
+# WORKERS=4 SERVER_CPUS=0,2,4,6 CLIENT_CPUS=8-31 WRK_THREADS=16 WRK_CONNS=512
+== monoio:uring: 1024493.47 req/s during the profile
+-- by shared object
+    91.95%  [unknown]       
+     8.03%  spike-monoio    
+-- by symbol (top 40)
+     2.66%  [unknown]         [k] 0xffffffff8f04c687
+     1.56%  [unknown]         [k] 0xffffffffc8b76d08
+     1.39%  [unknown]         [k] 0xffffffff8ff67fb8
+     1.34%  [unknown]         [k] 0xffffffff9008bbf1
+     1.31%  [unknown]         [k] 0xffffffff8ff59333
+     1.31%  [unknown]         [k] 0xffffffff8ff5c4f2
+     1.27%  [unknown]         [k] 0xffffffff8ff7777e
+     1.22%  [unknown]         [k] 0xffffffff8f4ba954
+     1.17%  [unknown]         [k] 0xffffffff9029af97
+     1.17%  [unknown]         [k] 0xffffffff9008f353
+     1.11%  spike-monoio      [.] <monoio::task::core::CoreStage<spike_monoio::conn::{closure#0}>>::poll
+     0.96%  [unknown]         [k] 0xffffffff9008237b
+     0.93%  [unknown]         [k] 0xffffffff8ff86300
+     0.85%  [unknown]         [k] 0xffffffff8ff4c55a
+     0.83%  [unknown]         [k] 0xffffffff8ff5dc61
+     0.82%  [unknown]         [k] 0xffffffff90094a19
+     0.82%  [unknown]         [k] 0xffffffff90074acf
+     0.75%  [unknown]         [k] 0xffffffff8ff5dc45
+     0.74%  [unknown]         [k] 0xffffffff8ff5dd31
+     0.72%  [unknown]         [k] 0xffffffff90095442
+     0.71%  [unknown]         [k] 0xffffffff90080fde
+     0.69%  [unknown]         [k] 0xffffffff8ff77760
+     0.67%  spike-monoio      [.] <runtime_spike::Requests>::feed
+     0.64%  [unknown]         [k] 0xffffffff90074b3d
+     0.62%  [unknown]         [k] 0xffffffff8f4bab69
+     0.61%  [unknown]         [k] 0xffffffff8f4680cd
+     0.60%  spike-monoio      [.] <monoio::utils::slab::Ref<monoio::driver::uring::lifecycle::Lifecycle>>::poll_op
+     0.59%  [unknown]         [k] 0xffffffff8f829de4
+     0.54%  [unknown]         [k] 0xffffffff8eef6750
+     0.50%  spike-monoio      [.] <monoio::utils::slab::Ref<monoio::driver::uring::lifecycle::Lifecycle>>::remove
+     0.49%  [unknown]         [k] 0xffffffff90083e33
+     0.48%  spike-monoio      [.] <monoio::macros::scoped_tls::ScopedKey<monoio::driver::Inner>>::set::<<monoio::runtime::Runtime<monoio::time::driver::TimeDriver<monoio::driver::uring::IoUringDriver>>>::block_on<spike_monoio::serve::{closure#0}>::{closure#0}, ()>
+     0.48%  spike-monoio      [.] <monoio::driver::uring::UringInner>::poll_op
+     0.47%  [unknown]         [k] 0xffffffff8ff5dd51
+     0.46%  [unknown]         [k] 0xffffffff8ff4e882
+     0.46%  [unknown]         [k] 0xffffffff9006af28
+     0.44%  [unknown]         [k] 0xffffffff900a66a9
+== compio:uring: 909365.01 req/s during the profile
+-- by shared object
+    85.86%  [unknown]       
+    12.52%  spike-compio    
+     1.63%  libc.so.6       
+-- by symbol (top 40)
+     3.01%  [unknown]         [k] 0xffffffff8f04c687
+     1.53%  spike-compio      [.] <compio_executor::task::TaskAlloc<spike_compio::conn::{closure#0}>>::run_future
+     1.42%  [unknown]         [k] 0xffffffffc8b76d08
+     1.24%  [unknown]         [k] 0xffffffff8f4ba954
+     1.23%  [unknown]         [k] 0xffffffff8ff5c4f2
+     1.18%  [unknown]         [k] 0xffffffff8ff67fb8
+     1.14%  [unknown]         [k] 0xffffffff9008bbf1
+     1.10%  [unknown]         [k] 0xffffffff8ff59333
+     1.08%  [unknown]         [k] 0xffffffff8ff7777e
+     0.93%  [unknown]         [k] 0xffffffff9029af97
+     0.92%  [unknown]         [k] 0xffffffff8ff462fd
+     0.90%  [unknown]         [k] 0xffffffff9008237b
+     0.87%  [unknown]         [k] 0xffffffff8ff5dd31
+     0.81%  [unknown]         [k] 0xffffffff8ff86300
+     0.78%  [unknown]         [k] 0xffffffff8ff5dc45
+     0.70%  [unknown]         [k] 0xffffffff90095442
+     0.69%  spike-compio      [.] <compio_driver::sys::driver::iour::Driver>::push
+     0.69%  [unknown]         [k] 0xffffffff90074acf
+     0.67%  spike-compio      [.] <runtime_spike::Requests>::feed
+     0.67%  [unknown]         [k] 0xffffffff90080fde
+     0.67%  [unknown]         [k] 0xffffffff8ff5dc61
+     0.64%  [unknown]         [k] 0xffffffff90074b3d
+     0.63%  [unknown]         [k] 0xffffffff8ff4c55a
+     0.62%  spike-compio      [.] <compio_executor::Executor>::tick
+     0.61%  [unknown]         [k] 0xffffffff8f4bab69
+     0.61%  [unknown]         [k] 0xffffffff8ff77760
+     0.57%  spike-compio      [.] <std::hash::random::RandomState as core::hash::BuildHasher>::hash_one::<&usize>
+     0.56%  [unknown]         [k] 0xffffffff90094a19
+     0.54%  [unknown]         [k] 0xffffffff8f4680cd
+     0.54%  spike-compio      [.] <compio_runtime::future::future::Submit<compio_driver::sys::op::socket::Recv<alloc::vec::Vec<u8>, compio_driver::fd::SharedFd<socket2::socket::Socket>>, compio_driver::sys::extra::Extra> as core::future::future::Future>::poll
+     0.51%  [unknown]         [k] 0xffffffff9008f36c
+     0.46%  [unknown]         [k] 0xffffffff8eef6750
+     0.46%  [unknown]         [k] 0xffffffff9029b011
+     0.46%  [unknown]         [k] 0xffffffff9008f353
+     0.46%  [unknown]         [k] 0xffffffff8f829de4
+     0.43%  [unknown]         [k] 0xffffffff8ff5dd51
+     0.43%  [unknown]         [k] 0xffffffff8ff4e882
+     0.42%  spike-compio      [.] <compio_runtime::future::future::Submit<compio_driver::sys::op::socket::Send<compio_buf::slice::Slice<&[u8]>, compio_driver::fd::SharedFd<socket2::socket::Socket>>> as core::future::future::Future>::poll
+     0.42%  [unknown]         [k] 0xffffffff9028bdeb
+     0.40%  libc.so.6         [.] _int_free
+== tokio: 900072.52 req/s during the profile
+-- by shared object
+    92.39%  [unknown]       
+     5.04%  spike-tokio     
+     2.55%  libc.so.6       
+-- by symbol (top 40)
+     2.89%  [unknown]         [k] 0xffffffff8f04c687
+     1.60%  [unknown]         [k] 0xffffffff8ff5dc61
+     1.36%  [unknown]         [k] 0xffffffffc8b76d08
+     1.36%  [unknown]         [k] 0xffffffff8f4ba954
+     1.28%  [unknown]         [k] 0xffffffff8ff7777e
+     1.28%  [unknown]         [k] 0xffffffff8ff59333
+     1.23%  [unknown]         [k] 0xffffffff8ff67fb8
+     1.19%  [unknown]         [k] 0xffffffff8f4baceb
+     1.17%  [unknown]         [k] 0xffffffff8f4276d9
+     1.06%  libc.so.6         [.] __GI___pthread_disable_asynccancel
+     0.99%  [unknown]         [k] 0xffffffff8ff5c4f2
+     0.95%  [unknown]         [k] 0xffffffff9029af97
+     0.88%  [unknown]         [k] 0xffffffff90080fde
+     0.82%  [unknown]         [k] 0xffffffff8ff86300
+     0.79%  [unknown]         [k] 0xffffffff8ff4c55a
+     0.79%  [unknown]         [k] 0xffffffff8ff77760
+     0.78%  [unknown]         [k] 0xffffffff8f4bab69
+     0.77%  [unknown]         [k] 0xffffffff8ff5dc45
+     0.77%  [unknown]         [k] 0xffffffff8f829de4
+     0.74%  [unknown]         [k] 0xffffffff9007d882
+     0.73%  [unknown]         [k] 0xffffffff90074acf
+     0.72%  [unknown]         [k] 0xffffffff90094a19
+     0.66%  libc.so.6         [.] __send
+     0.66%  [unknown]         [k] 0xffffffff90074b3d
+     0.65%  [unknown]         [k] 0xffffffff90095442
+     0.64%  spike-tokio       [.] <runtime_spike::Requests>::feed
+     0.62%  [unknown]         [k] 0xffffffff8ec001c4
+     0.60%  spike-tokio       [.] <tokio::runtime::io::scheduled_io::ScheduledIo>::poll_readiness
+     0.59%  [unknown]         [k] 0xffffffff9008237b
+     0.58%  [unknown]         [k] 0xffffffff8ff67ae9
+     0.58%  libc.so.6         [.] __libc_recv
+     0.54%  [unknown]         [k] 0xffffffff8f468279
+     0.51%  [unknown]         [k] 0xffffffff8ff462fd
+     0.50%  [unknown]         [k] 0xffffffff8f03221f
+     0.49%  [unknown]         [k] 0xffffffff9029b26f
+     0.48%  [unknown]         [k] 0xffffffff8ff4e882
+     0.46%  [unknown]         [k] 0xffffffff9008f36c
+     0.46%  [unknown]         [k] 0xffffffff9008f353
+     0.45%  [unknown]         [k] 0xffffffff8eef6750
+     0.44%  spike-tokio       [.] <tokio::runtime::io::scheduled_io::ScheduledIo>::wake
+== tokio-mt: 837889.86 req/s during the profile
+-- by shared object
+    90.55%  [unknown]       
+     6.57%  spike-tokio-mt  
+     2.83%  libc.so.6       
+-- by symbol (top 40)
+     3.75%  [unknown]         [k] 0xffffffff8f04c687
+     1.46%  [unknown]         [k] 0xffffffff8ff5dc61
+     1.26%  [unknown]         [k] 0xffffffff8f4ba954
+     1.24%  [unknown]         [k] 0xffffffff8ff7777e
+     1.24%  [unknown]         [k] 0xffffffff8f468279
+     1.16%  [unknown]         [k] 0xffffffff8ff59333
+     1.12%  [unknown]         [k] 0xffffffff8f4276d9
+     1.08%  [unknown]         [k] 0xffffffff9029af23
+     1.08%  [unknown]         [k] 0xffffffff8f4baceb
+     1.05%  libc.so.6         [.] __GI___pthread_disable_asynccancel
+     1.02%  [unknown]         [k] 0xffffffff8ff67fb8
+     1.01%  [unknown]         [k] 0xffffffffc8b76d08
+     0.98%  [unknown]         [k] 0xffffffff8ff462fd
+     0.86%  [unknown]         [k] 0xffffffff8ff5c4f2
+     0.85%  [unknown]         [k] 0xffffffff9029af97
+     0.85%  [unknown]         [k] 0xffffffff8ff86300
+     0.84%  spike-tokio-mt    [.] <tokio::runtime::io::scheduled_io::ScheduledIo>::poll_readiness
+     0.83%  [unknown]         [k] 0xffffffff90074acf
+     0.81%  [unknown]         [k] 0xffffffff8f03221f
+     0.80%  [unknown]         [k] 0xffffffff90080fde
+     0.78%  [unknown]         [k] 0xffffffff9007d882
+     0.72%  [unknown]         [k] 0xffffffff8ff4c55a
+     0.72%  [unknown]         [k] 0xffffffff8ff77760
+     0.71%  [unknown]         [k] 0xffffffff8ff5dc45
+     0.70%  [unknown]         [k] 0xffffffff90094a19
+     0.70%  [unknown]         [k] 0xffffffff8f829de4
+     0.68%  libc.so.6         [.] __send
+     0.65%  [unknown]         [k] 0xffffffff9008f353
+     0.65%  [unknown]         [k] 0xffffffff8f4ba482
+     0.63%  spike-tokio-mt    [.] <tokio::runtime::io::scheduled_io::ScheduledIo>::wake
+     0.63%  [unknown]         [k] 0xffffffff8f4bab69
+     0.62%  [unknown]         [k] 0xffffffffc8b76ce9
+     0.62%  spike-tokio-mt    [.] <runtime_spike::Requests>::feed
+     0.57%  libc.so.6         [.] __libc_recv
+     0.55%  [unknown]         [k] 0xffffffff8ec001c4
+     0.55%  [unknown]         [k] 0xffffffff90095442
+     0.52%  libc.so.6         [.] __GI___pthread_enable_asynccancel
+     0.51%  [unknown]         [k] 0xffffffff9029b26f
+     0.48%  [unknown]         [k] 0xffffffff90074b3d
+     0.47%  [unknown]         [k] 0xffffffff8eef6750
+== tokio-uring: 984909.74 req/s during the profile
+-- by shared object
+    91.21%  [unknown]        
+     8.68%  spike-tokio-uring
+-- by symbol (top 40)
+     2.52%  [unknown]          [k] 0xffffffff8f04c687
+     1.49%  [unknown]          [k] 0xffffffffc8b76d08
+     1.34%  [unknown]          [k] 0xffffffff8ff67fb8
+     1.34%  spike-tokio-uring  [.] spike_tokio_uring::conn::{closure#0}
+     1.25%  [unknown]          [k] 0xffffffff8ff7777e
+     1.22%  [unknown]          [k] 0xffffffff8ff59333
+     1.22%  [unknown]          [k] 0xffffffff9008bbf1
+     1.21%  [unknown]          [k] 0xffffffff9029af97
+     1.21%  [unknown]          [k] 0xffffffff8ff5c4f2
+     1.20%  [unknown]          [k] 0xffffffff8f4ba954
+     1.10%  [unknown]          [k] 0xffffffff9008f353
+     0.89%  [unknown]          [k] 0xffffffff8ff86300
+     0.88%  [unknown]          [k] 0xffffffff90074acf
+     0.84%  [unknown]          [k] 0xffffffff8ff5dc61
+     0.83%  [unknown]          [k] 0xffffffff9008237b
+     0.82%  [unknown]          [k] 0xffffffff8ff4c55a
+     0.81%  [unknown]          [k] 0xffffffff90094a19
+     0.77%  [unknown]          [k] 0xffffffff8ff5dc45
+     0.76%  [unknown]          [k] 0xffffffff90080fde
+     0.74%  [unknown]          [k] 0xffffffff8ff5dd31
+     0.71%  [unknown]          [k] 0xffffffff90095442
+     0.70%  [unknown]          [k] 0xffffffff8ff77760
+     0.70%  [unknown]          [k] 0xffffffff8f4680cd
+     0.62%  spike-tokio-uring  [.] <runtime_spike::Requests>::feed
+     0.61%  [unknown]          [k] 0xffffffff90074b3d
+     0.57%  [unknown]          [k] 0xffffffff8f829de4
+     0.53%  [unknown]          [k] 0xffffffff8eef6750
+     0.53%  [unknown]          [k] 0xffffffff8f4bab69
+     0.52%  spike-tokio-uring  [.] <tokio_uring::runtime::driver::Driver>::poll_op::<tokio_uring::io::read::Read<alloc::vec::Vec<u8>>>
+     0.51%  [unknown]          [k] 0xffffffff90083e33
+     0.49%  [unknown]          [k] 0xffffffff900a66a9
+     0.49%  [unknown]          [k] 0xffffffff8f70c347
+     0.47%  [unknown]          [k] 0xffffffff9006af28
+     0.46%  [unknown]          [k] 0xffffffff8ff5dd51
+     0.45%  spike-tokio-uring  [.] <tokio::runtime::task::state::State>::transition_to_idle
+     0.43%  [unknown]          [k] 0xffffffff9028bdeb
+     0.42%  [unknown]          [k] 0xffffffff8f6f358a
+     0.41%  [unknown]          [k] 0xffffffff8ff4e882
+     0.40%  [unknown]          [k] 0xffffffff8f43819b
+== monoio:legacy: 862591.51 req/s during the profile
+-- by shared object
+    91.57%  [unknown]       
+     4.28%  spike-monoio    
+     4.15%  libc.so.6       
+-- by symbol (top 40)
+     2.90%  [unknown]         [k] 0xffffffff8f04c687
+     1.54%  [unknown]         [k] 0xffffffff8ff5dc61
+     1.49%  libc.so.6         [.] __libc_recv
+     1.36%  libc.so.6         [.] __GI___pthread_disable_asynccancel
+     1.30%  [unknown]         [k] 0xffffffff8ff59333
+     1.26%  [unknown]         [k] 0xffffffffc8b76d08
+     1.26%  [unknown]         [k] 0xffffffff8ff7777e
+     1.21%  [unknown]         [k] 0xffffffff9029af97
+     1.16%  [unknown]         [k] 0xffffffff8f4276d9
+     1.12%  spike-monoio      [.] <monoio::task::core::CoreStage<spike_monoio::conn::{closure#0}>>::poll
+     1.10%  [unknown]         [k] 0xffffffff8ff67fb8
+     1.06%  [unknown]         [k] 0xffffffff8ff5c4f2
+     1.05%  [unknown]         [k] 0xffffffff8f4ba954
+     0.90%  [unknown]         [k] 0xffffffff9007d882
+     0.86%  [unknown]         [k] 0xffffffff90080fde
+     0.83%  [unknown]         [k] 0xffffffff8ec001c4
+     0.79%  [unknown]         [k] 0xffffffff8ff86300
+     0.78%  libc.so.6         [.] __send
+     0.76%  [unknown]         [k] 0xffffffff8ff77760
+     0.75%  [unknown]         [k] 0xffffffff8ff5dc45
+     0.73%  [unknown]         [k] 0xffffffff8ff4c55a
+     0.73%  [unknown]         [k] 0xffffffff90094a19
+     0.72%  [unknown]         [k] 0xffffffff90074acf
+     0.71%  [unknown]         [k] 0xffffffff8f4baceb
+     0.69%  [unknown]         [k] 0xffffffff8f4bab69
+     0.69%  [unknown]         [k] 0xffffffff8ff462fd
+     0.65%  [unknown]         [k] 0xffffffff8f829de4
+     0.64%  spike-monoio      [.] <runtime_spike::Requests>::feed
+     0.63%  [unknown]         [k] 0xffffffff9008237b
+     0.60%  [unknown]         [k] 0xffffffff8f468279
+     0.60%  [unknown]         [k] 0xffffffff90074b3d
+     0.59%  [unknown]         [k] 0xffffffff9008f353
+     0.55%  [unknown]         [k] 0xffffffff90095442
+     0.53%  [unknown]         [k] 0xffffffff9029b26f
+     0.52%  [unknown]         [k] 0xffffffff8ff67ae9
+     0.51%  libc.so.6         [.] __GI___pthread_enable_asynccancel
+     0.48%  [unknown]         [k] 0xffffffff8ff4e882
+     0.46%  [unknown]         [k] 0xffffffff900a66a9
+     0.46%  [unknown]         [k] 0xffffffff8eef6750
+     0.43%  spike-monoio      [.] <monoio::driver::legacy::LegacyInner>::poll_op::<monoio::driver::op::recv::Recv<alloc::vec::Vec<u8>>>
+== compio:poll: 629705.90 req/s during the profile
+-- by shared object
+    84.62%  [unknown]       
+    13.63%  spike-compio    
+     1.74%  libc.so.6       
+-- by symbol (top 40)
+     2.93%  [unknown]         [k] 0xffffffff8f04c687
+     1.22%  spike-compio      [.] <compio_executor::task::TaskAlloc<spike_compio::conn::{closure#0}>>::run_future
+     1.10%  spike-compio      [.] <compio_driver::sys::driver::poll::Driver>::poll
+     1.05%  [unknown]         [k] 0xffffffff8f468279
+     1.00%  [unknown]         [k] 0xffffffff8ec001c4
+     0.95%  [unknown]         [k] 0xffffffffc8b76d08
+     0.88%  [unknown]         [k] 0xffffffff8ff5dd31
+     0.88%  spike-compio      [.] <compio_driver::sys::driver::poll::Driver>::push
+     0.87%  [unknown]         [k] 0xffffffff9029af97
+     0.87%  [unknown]         [k] 0xffffffff8ff67fb8
+     0.85%  [unknown]         [k] 0xffffffff8ff7777e
+     0.84%  [unknown]         [k] 0xffffffff8ff59333
+     0.83%  [unknown]         [k] 0xffffffff8ff462fd
+     0.83%  [unknown]         [k] 0xffffffff8f4bc2e7
+     0.79%  [unknown]         [k] 0xffffffff9008bbf1
+     0.79%  [unknown]         [k] 0xffffffff8ff5c4f2
+     0.79%  [unknown]         [k] 0xffffffff8f43819b
+     0.79%  [unknown]         [k] 0xffffffff8f4ba954
+     0.76%  [unknown]         [k] 0xffffffff902944bc
+     0.72%  [unknown]         [k] 0xffffffff9008237b
+     0.72%  [unknown]         [k] 0xffffffff8f4b9c0d
+     0.72%  [unknown]         [k] 0xffffffff9029af23
+     0.66%  [unknown]         [k] 0xffffffff90080fde
+     0.66%  spike-compio      [.] <std::hash::random::RandomState as core::hash::BuildHasher>::hash_one::<&i32>
+     0.64%  spike-compio      [.] compio_driver::sys::pal::poll::decide::<core::io::error::Error, <compio_driver::sys::op::socket::Send<compio_buf::slice::Slice<&[u8]>, compio_driver::fd::SharedFd<socket2::socket::Socket>> as compio_driver::sys::driver::poll::op::OpCode>::pre_submit::{closure#0}>
+     0.60%  [unknown]         [k] 0xffffffff8f4b9c63
+     0.58%  spike-compio      [.] compio_driver::sys::pal::poll::decide::<core::io::error::Error, <compio_driver::sys::op::socket::Recv<alloc::vec::Vec<u8>, compio_driver::fd::SharedFd<socket2::socket::Socket>> as compio_driver::sys::driver::poll::op::OpCode>::pre_submit::{closure#0}>
+     0.57%  [unknown]         [k] 0xffffffff9029b011
+     0.57%  libc.so.6         [.] _int_free
+     0.55%  [unknown]         [k] 0xffffffff8ff4c55a
+     0.54%  [unknown]         [k] 0xffffffff8f829de4
+     0.53%  [unknown]         [k] 0xffffffff8ff77760
+     0.53%  spike-compio      [.] <polling::epoll::Poller>::add
+     0.52%  [unknown]         [k] 0xffffffff8f03221f
+     0.51%  [unknown]         [k] 0xffffffff90074acf
+     0.51%  [unknown]         [k] 0xffffffff8ff86300
+     0.51%  [unknown]         [k] 0xffffffff8ff5dc45
+     0.50%  [unknown]         [k] 0xffffffff8ff5dc61
+     0.49%  [unknown]         [k] 0xffffffff8f4276d9
+     0.49%  [unknown]         [k] 0xffffffff90095442
+== nginx=/usr/sbin/nginx: 743193.00 req/s during the profile
+-- by shared object
+    77.72%  [unknown]       
+    19.09%  nginx           
+     3.18%  libc.so.6       
+-- by symbol (top 40)
+     2.65%  [unknown]         [k] 0xffffffff8f04c687
+     2.02%  nginx             [.] ngx_reusable_connection
+     1.73%  nginx             [.] ngx_http_free_request
+     1.54%  nginx             [.] ngx_http_create_request
+     1.31%  nginx             [.] ngx_http_process_request
+     1.18%  [unknown]         [k] 0xffffffff8ff5dc61
+     1.05%  [unknown]         [k] 0xffffffff8ff7777e
+     1.04%  [unknown]         [k] 0xffffffff8ff59333
+     1.03%  [unknown]         [k] 0xffffffffc8b76d08
+     0.95%  [unknown]         [k] 0xffffffff8f4276d9
+     0.94%  [unknown]         [k] 0xffffffff8ff67fb8
+     0.93%  [unknown]         [k] 0xffffffff8f4ba954
+     0.82%  [unknown]         [k] 0xffffffff8ff462fd
+     0.79%  nginx             [.] ngx_http_write_filter
+     0.75%  [unknown]         [k] 0xffffffff9029af97
+     0.72%  [unknown]         [k] 0xffffffff9007d882
+     0.72%  [unknown]         [k] 0xffffffff8ff5c4f2
+     0.71%  [unknown]         [k] 0xffffffff8ff4c55a
+     0.68%  [unknown]         [k] 0xffffffff8f829de4
+     0.67%  [unknown]         [k] 0xffffffff8ff77760
+     0.65%  nginx             [.] ngx_http_parse_request_line
+     0.65%  [unknown]         [k] 0xffffffff90074acf
+     0.63%  libc.so.6         [.] __GI___writev
+     0.63%  [unknown]         [k] 0xffffffff90094a19
+     0.61%  [unknown]         [k] 0xffffffff90080fde
+     0.60%  [unknown]         [k] 0xffffffff8ff5dc45
+     0.54%  [unknown]         [k] 0xffffffff8ff52562
+     0.52%  [unknown]         [k] 0xffffffff8ff86300
+     0.50%  [unknown]         [k] 0xffffffff9008237b
+     0.49%  [unknown]         [k] 0xffffffff8ff4e882
+     0.49%  [unknown]         [k] 0xffffffff90074b3d
+     0.48%  [unknown]         [k] 0xffffffff9008f353
+     0.48%  nginx             [.] ngx_pcalloc
+     0.48%  [unknown]         [k] 0xffffffff8f4baceb
+     0.47%  [unknown]         [k] 0xffffffff8f4bab69
+     0.46%  libc.so.6         [.] __libc_recv
+     0.46%  [unknown]         [k] 0xffffffff8ff67ae9
+     0.45%  [unknown]         [k] 0xffffffff8f03221f
+     0.44%  nginx             [.] ngx_http_parse_header_line
+     0.44%  [unknown]         [k] 0xffffffff8efff12e
+== ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:io_uring: 764622.58 req/s during the profile
+-- by shared object
+    72.76%  [unknown]       
+    21.30%  ruxen-a205d4b2  
+     3.66%  libc.so.6       
+     2.29%  [vdso]          
+-- by symbol (top 40)
+     3.07%  ruxen-a205d4b2    [.] ruxen::worker::runtime::handle::<monoio::net::tcp::stream::TcpStream>::{closure#0}
+     2.52%  libc.so.6         [.] __memmove_avx_unaligned_erms
+     2.35%  [unknown]         [k] 0xffffffff8f04c687
+     2.04%  ruxen-a205d4b2    [.] ruxen::phase::process_with_meta_inner
+     1.35%  [vdso]            [.] 0x0000000000000997
+     1.32%  ruxen-a205d4b2    [.] ruxen::http::parse_request
+     1.10%  [unknown]         [k] 0xffffffff8f4ba954
+     1.04%  [unknown]         [k] 0xffffffff8ff67fb8
+     1.02%  [unknown]         [k] 0xffffffff9008bbf1
+     1.00%  [unknown]         [k] 0xffffffff8ff7777e
+     0.98%  [unknown]         [k] 0xffffffff8ff5c4f2
+     0.93%  [unknown]         [k] 0xffffffff8ff59333
+     0.91%  [unknown]         [k] 0xffffffff9008f353
+     0.84%  [unknown]         [k] 0xffffffff9029af97
+     0.73%  [unknown]         [k] 0xffffffff8ff5dd31
+     0.71%  [unknown]         [k] 0xffffffff90074acf
+     0.70%  ruxen-a205d4b2    [.] ruxen::worker::render::lookup_request_header
+     0.69%  ruxen-a205d4b2    [.] ruxen::worker::runtime::read_first_or_shutdown::{closure#0}
+     0.69%  [unknown]         [k] 0xffffffffc8b76d08
+     0.68%  [unknown]         [k] 0xffffffff8f4680cd
+     0.66%  ruxen-a205d4b2    [.] ruxen::worker::handler::run_location_handler
+     0.66%  ruxen-a205d4b2    [.] <core::future::poll_fn::PollFn<ruxen::worker::runtime::read_first_or_shutdown::{closure#0}::{closure#2}> as core::future::future::Future>::poll
+     0.64%  [unknown]         [k] 0xffffffff8ff86300
+     0.63%  [unknown]         [k] 0xffffffff8ff5dc61
+     0.62%  [unknown]         [k] 0xffffffff90094a19
+     0.60%  [unknown]         [k] 0xffffffff8ff4c55a
+     0.59%  [unknown]         [k] 0xffffffff8ff5dc45
+     0.58%  [unknown]         [k] 0xffffffff90080fde
+     0.56%  [unknown]         [k] 0xffffffff9008237b
+     0.56%  [unknown]         [k] 0xffffffff8f03221f
+     0.55%  [unknown]         [k] 0xffffffff8f829de4
+     0.54%  [unknown]         [k] 0xffffffffc8b76e2c
+     0.54%  ruxen-a205d4b2    [.] ruxen::http::normalize_host
+     0.54%  [unknown]         [k] 0xffffffff8f4bab69
+     0.49%  [unknown]         [k] 0xffffffffc8b76ce9
+     0.49%  [unknown]         [k] 0xffffffff8ff77760
+     0.48%  [unknown]         [k] 0xffffffff8f82c533
+     0.46%  ruxen-a205d4b2    [.] <ruxen::worker::connection::Timed<<monoio::driver::op::Op<monoio::driver::op::send::Send<monoio::buf::slice::Slice<alloc::vec::Vec<u8>>>>>::write::{closure#0}, ruxen::worker::connection::with_timeout<<monoio::driver::op::Op<monoio::driver::op::send::Send<monoio::buf::slice::Slice<alloc::vec::Vec<u8>>>>>::write::{closure#0}>::{closure#0}> as core::future::future::Future>::poll
+     0.45%  [unknown]         [k] 0xffffffff8f4276d9
+     0.44%  [unknown]         [k] 0xffffffff90095442
+== ruxen=/home/eugene/articles/epoll-vs-io_uring-rust/bench/bin/ruxen-a205d4b2:epoll: 674338.77 req/s during the profile
+-- by shared object
+    72.98%  [unknown]       
+    18.82%  ruxen-a205d4b2  
+     6.39%  libc.so.6       
+     1.82%  [vdso]          
+-- by symbol (top 40)
+     3.10%  ruxen-a205d4b2    [.] ruxen::worker::runtime::handle::<monoio::net::tcp::stream::TcpStream>::{closure#0}
+     2.51%  [unknown]         [k] 0xffffffff8f04c687
+     2.36%  libc.so.6         [.] __memmove_avx_unaligned_erms
+     2.27%  ruxen-a205d4b2    [.] ruxen::phase::process_with_meta_inner
+     1.26%  ruxen-a205d4b2    [.] ruxen::http::parse_request
+     1.22%  libc.so.6         [.] __libc_recv
+     1.14%  [unknown]         [k] 0xffffffff8ff5dc61
+     1.04%  [vdso]            [.] 0x0000000000000997
+     1.00%  libc.so.6         [.] __GI___pthread_disable_asynccancel
+     0.98%  [unknown]         [k] 0xffffffff8ff59333
+     0.96%  [unknown]         [k] 0xffffffff8ff7777e
+     0.90%  [unknown]         [k] 0xffffffff8f4ba954
+     0.90%  [unknown]         [k] 0xffffffff8ff67fb8
+     0.90%  ruxen-a205d4b2    [.] ruxen::worker::handler::run_location_handler
+     0.89%  [unknown]         [k] 0xffffffff8f4276d9
+     0.88%  [unknown]         [k] 0xffffffff9029af97
+     0.76%  ruxen-a205d4b2    [.] <core::future::poll_fn::PollFn<ruxen::worker::runtime::read_first_or_shutdown::{closure#0}::{closure#2}> as core::future::future::Future>::poll
+     0.74%  [unknown]         [k] 0xffffffff8ff4c55a
+     0.74%  [unknown]         [k] 0xffffffff8ff5c4f2
+     0.69%  ruxen-a205d4b2    [.] ruxen::worker::runtime::read_first_or_shutdown::{closure#0}
+     0.67%  libc.so.6         [.] __send
+     0.65%  [unknown]         [k] 0xffffffffc8b76d08
+     0.64%  ruxen-a205d4b2    [.] ruxen::worker::render::lookup_request_header
+     0.62%  [unknown]         [k] 0xffffffff90074acf
+     0.61%  [unknown]         [k] 0xffffffff8f03221f
+     0.60%  [unknown]         [k] 0xffffffff8ff462fd
+     0.60%  [unknown]         [k] 0xffffffff8ff5dc45
+     0.58%  [unknown]         [k] 0xffffffff9007d882
+     0.55%  ruxen-a205d4b2    [.] <std::hash::random::DefaultHasher as core::hash::Hasher>::write
+     0.54%  [unknown]         [k] 0xffffffff8f829de4
+     0.54%  [unknown]         [k] 0xffffffff8ec001c4
+     0.54%  [unknown]         [k] 0xffffffff9008f353
+     0.52%  [unknown]         [k] 0xffffffff90094a19
+     0.51%  ruxen-a205d4b2    [.] <monoio::driver::legacy::LegacyInner>::poll_op::<monoio::driver::op::recv::Recv<monoio::buf::slice::SliceMut<alloc::vec::Vec<u8>>>>
+     0.50%  [unknown]         [k] 0xffffffff8f4baceb
+     0.49%  [unknown]         [k] 0xffffffff8ff86300
+     0.47%  [unknown]         [k] 0xffffffff8ff77760
+     0.47%  ruxen-a205d4b2    [.] ruxen::http::normalize_host
+     0.47%  [unknown]         [k] 0xffffffffc8b76e2c
+     0.43%  libc.so.6         [.] __GI___pthread_enable_asynccancel

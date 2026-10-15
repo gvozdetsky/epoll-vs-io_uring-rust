@@ -1,0 +1,57 @@
+# ruxen-L2-io_uring-vs-nginx on i7, 2026-10-15 01:53:41
+# WORKERS=2 SERVER_CPUS=0,1 CLIENT_CPUS=2,3,4,5,8,9,10,11 WRK_THREADS=8 WRK_CONNS=512
+=== ruxen m1_hello: ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring vs nginx=/usr/sbin/nginx
+# A=nginx=/usr/sbin/nginx B=ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring url=http://127.0.0.1:8080/ conf=/home/eugene/ruxen-bench/article/ruxen-configs/m1 pairs=8 duration=10s keepalive=1 workers=2 server_cpus=0,1 client_cpus=2,3,4,5,8,9,10,11 wrk=-t8/-c512
+pair 0 A 192128.43 p50 2680 p99 2860 | B 247479.68 p50 2030 p99 2220 | B/A 128.81%
+pair 1 A 190882.92 p50 2670 p99 2780 | B 247391.02 p50 2030 p99 2280 | B/A 129.60%
+pair 2 A 193028.26 p50 2640 p99 2740 | B 247289.95 p50 2040 p99 2180 | B/A 128.11%
+pair 3 A 192551.63 p50 2650 p99 2790 | B 246233.01 p50 2010 p99 2400 | B/A 127.88%
+pair 4 A 178832.17 p50 2840 p99 3020 | B 246622.81 p50 2040 p99 2210 | B/A 137.91%
+pair 5 A 190236.54 p50 2680 p99 2790 | B 245352.57 p50 2060 p99 2210 | B/A 128.97%
+pair 6 A 187087.52 p50 2730 p99 2850 | B 248251.33 p50 2020 p99 2290 | B/A 132.69%
+pair 7 A 189270.75 p50 2690 p99 2810 | B 246602.86 p50 2040 p99 2250 | B/A 130.29%
+RESULT ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring / nginx=/usr/sbin/nginx: 130.5% (min 127.9, max 137.9; 8 pairs)  p50 us A 2680 B 2035  p99 us A 2800 B 2235
+=== ruxen m1_no_keepalive: ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring vs nginx=/usr/sbin/nginx
+# A=nginx=/usr/sbin/nginx B=ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring url=http://127.0.0.1:8081/ conf=/home/eugene/ruxen-bench/article/ruxen-configs/m1_no_keepalive pairs=8 duration=10s keepalive=0 workers=2 server_cpus=0,1 client_cpus=2,3,4,5,8,9,10,11 wrk=-t8/-c512
+pair 0 A 72206.24 p50 9110 p99 13580 | B 46909.69 p50 4960 p99 19140 | B/A 64.97%
+pair 1 A 73549.96 p50 7810 p99 13250 | B 47442.56 p50 5150 p99 19680 | B/A 64.50%
+pair 2 A 72519.68 p50 9310 p99 13550 | B 45565.86 p50 5150 p99 19920 | B/A 62.83%
+pair 3 A 71985.34 p50 7000 p99 13730 | B 45933.19 p50 5340 p99 19440 | B/A 63.81%
+pair 4 A 72286.02 p50 9950 p99 13580 | B 47008.94 p50 5400 p99 16770 | B/A 65.03%
+pair 5 A 70711.25 p50 10550 p99 13940 | B 45205.78 p50 5230 p99 20820 | B/A 63.93%
+pair 6 A 70429.52 p50 7310 p99 13970 | B 46596.96 p50 5330 p99 17240 | B/A 66.16%
+pair 7 A 71204.64 p50 10010 p99 13810 | B 45893.08 p50 4850 p99 19860 | B/A 64.45%
+RESULT ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring / nginx=/usr/sbin/nginx: 64.5% (min 62.8, max 66.2; 8 pairs)  p50 us A 9210 B 5190  p99 us A 13655 B 19560
+=== ruxen proxy_hello: ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring vs nginx=/usr/sbin/nginx
+# A=nginx=/usr/sbin/nginx B=ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring url=http://127.0.0.1:8095/ conf=/home/eugene/ruxen-bench/article/ruxen-configs/proxy_pass pairs=8 duration=10s keepalive=1 workers=2 server_cpus=0,1 client_cpus=2,3,4,5,8,9,10,11 wrk=-t8/-c512
+pair 0 A 53425.49 p50 9510 p99 10770 | B 63391.07 p50 7120 p99 280390 | B/A 118.65%
+pair 1 A 53916.06 p50 9470 p99 10860 | B 63561.97 p50 6940 p99 297790 | B/A 117.89%
+pair 2 A 53702.10 p50 9480 p99 10840 | B 63731.95 p50 7530 p99 290110 | B/A 118.68%
+pair 3 A 52669.36 p50 9650 p99 11010 | B 63899.76 p50 7530 p99 276300 | B/A 121.32%
+pair 4 A 54534.50 p50 9350 p99 10790 | B 61448.68 p50 7490 p99 281330 | B/A 112.68%
+pair 5 A 48824.68 p50 10430 p99 11460 | B 63974.09 p50 7300 p99 286920 | B/A 131.03%
+pair 6 A 52568.90 p50 9690 p99 11220 | B 62427.65 p50 6930 p99 293920 | B/A 118.75%
+pair 7 A 53841.71 p50 9440 p99 10660 | B 63839.89 p50 7100 p99 297370 | B/A 118.57%
+RESULT ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring / nginx=/usr/sbin/nginx: 119.6% (min 112.7, max 131.0; 8 pairs)  p50 us A 9495 B 7210  p99 us A 10850 B 288515
+=== ruxen m3_static_1k: ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring vs nginx=/usr/sbin/nginx
+# A=nginx=/usr/sbin/nginx B=ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring url=http://127.0.0.1:8090/hello.txt conf=/home/eugene/ruxen-bench/article/ruxen-configs/m3 pairs=8 duration=10s keepalive=1 workers=2 server_cpus=0,1 client_cpus=2,3,4,5,8,9,10,11 wrk=-t8/-c512
+pair 0 A 74944.89 p50 6940 p99 7180 | B 116651.03 p50 4360 p99 4500 | B/A 155.65%
+pair 1 A 76476.71 p50 7030 p99 7210 | B 117436.52 p50 4290 p99 4720 | B/A 153.56%
+pair 2 A 74417.42 p50 6640 p99 7330 | B 116432.06 p50 4290 p99 4770 | B/A 156.46%
+pair 3 A 76422.08 p50 6890 p99 7080 | B 119344.61 p50 4250 p99 4540 | B/A 156.17%
+pair 4 A 76552.18 p50 6740 p99 6940 | B 116857.00 p50 4350 p99 4480 | B/A 152.65%
+pair 5 A 75552.95 p50 6790 p99 7020 | B 121077.22 p50 4190 p99 4330 | B/A 160.25%
+pair 6 A 76059.22 p50 6480 p99 7260 | B 117269.81 p50 4330 p99 4490 | B/A 154.18%
+pair 7 A 76514.83 p50 6570 p99 7050 | B 116816.71 p50 4250 p99 4760 | B/A 152.67%
+RESULT ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring / nginx=/usr/sbin/nginx: 155.2% (min 152.7, max 160.2; 8 pairs)  p50 us A 6765 B 4290  p99 us A 7130 B 4520
+=== ruxen tls_hello: ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring vs nginx=/usr/sbin/nginx
+# A=nginx=/usr/sbin/nginx B=ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring url=https://127.0.0.1:8443/ conf=/home/eugene/ruxen-bench/article/ruxen-configs/tls pairs=8 duration=10s keepalive=1 workers=2 server_cpus=0,1 client_cpus=2,3,4,5,8,9,10,11 wrk=-t8/-c512
+pair 0 A 92962.26 p50 5220 p99 5890 | B 165079.31 p50 2930 p99 3510 | B/A 177.58%
+pair 1 A 94032.86 p50 5350 p99 5640 | B 167277.72 p50 2930 p99 3330 | B/A 177.89%
+pair 2 A 92686.34 p50 5420 p99 5590 | B 168306.33 p50 2910 p99 3300 | B/A 181.59%
+pair 3 A 90616.83 p50 5550 p99 5750 | B 166859.36 p50 2940 p99 3270 | B/A 184.14%
+pair 4 A 90913.29 p50 5620 p99 5930 | B 167228.51 p50 2940 p99 3240 | B/A 183.94%
+pair 5 A 94986.90 p50 5290 p99 5560 | B 165149.39 p50 2940 p99 3480 | B/A 173.87%
+pair 6 A 92113.05 p50 5140 p99 6110 | B 167968.79 p50 2910 p99 3380 | B/A 182.35%
+pair 7 A 94475.26 p50 5330 p99 5580 | B 167939.64 p50 2900 p99 3460 | B/A 177.76%
+RESULT ruxen=/home/eugene/ruxen-bench/article/bin/ruxen-a205d4b2:io_uring / nginx=/usr/sbin/nginx: 179.9% (min 173.9, max 184.1; 8 pairs)  p50 us A 5340 B 2930  p99 us A 5695 B 3355

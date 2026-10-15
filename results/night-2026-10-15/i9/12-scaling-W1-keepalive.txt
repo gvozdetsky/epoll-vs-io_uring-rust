@@ -1,0 +1,46 @@
+# scaling-W1-keepalive on i9, 2026-10-15 00:54:55
+# WORKERS=1 SERVER_CPUS=0 CLIENT_CPUS=8-31 WRK_THREADS=16 WRK_CONNS=512
+=== keepalive=1 tokio vs monoio:uring
+# A=monoio:uring B=tokio url=http://127.0.0.1:18080/ conf=generated pairs=8 duration=10s keepalive=1 workers=1 server_cpus=0 client_cpus=8-31 wrk=-t16/-c512
+pair 0 A 309382.34 p50 1650 p99 1680 | B 303072.61 p50 1690 p99 1760 | B/A 97.96%
+pair 1 A 307080.68 p50 1660 p99 1700 | B 302794.03 p50 1690 p99 1760 | B/A 98.60%
+pair 2 A 314657.86 p50 1630 p99 1660 | B 302278.03 p50 1690 p99 1760 | B/A 96.07%
+pair 3 A 316120.56 p50 1620 p99 1650 | B 302914.32 p50 1690 p99 1760 | B/A 95.82%
+pair 4 A 316474.17 p50 1610 p99 1650 | B 302829.87 p50 1690 p99 1760 | B/A 95.69%
+pair 5 A 313840.66 p50 1630 p99 1670 | B 303075.23 p50 1690 p99 1750 | B/A 96.57%
+pair 6 A 315068.99 p50 1620 p99 1660 | B 302003.05 p50 1690 p99 1760 | B/A 95.85%
+pair 7 A 314457.37 p50 1620 p99 1660 | B 301400.21 p50 1700 p99 1760 | B/A 95.85%
+RESULT tokio / monoio:uring: 96.5% (min 95.7, max 98.6; 8 pairs)  p50 us A 1625 B 1690  p99 us A 1660 B 1760
+=== keepalive=1 monoio:legacy vs monoio:uring
+# A=monoio:uring B=monoio:legacy url=http://127.0.0.1:18080/ conf=generated pairs=8 duration=10s keepalive=1 workers=1 server_cpus=0 client_cpus=8-31 wrk=-t16/-c512
+pair 0 A 315036.96 p50 1620 p99 1670 | B 285768.19 p50 1790 p99 1870 | B/A 90.71%
+pair 1 A 311019.33 p50 1640 p99 1680 | B 285250.39 p50 1790 p99 1870 | B/A 91.71%
+pair 2 A 313630.82 p50 1630 p99 1660 | B 284383.10 p50 1800 p99 1880 | B/A 90.67%
+pair 3 A 317472.01 p50 1610 p99 1650 | B 282805.70 p50 1810 p99 1900 | B/A 89.08%
+pair 4 A 280320.00 p50 1820 p99 1860 | B 285734.82 p50 1790 p99 1870 | B/A 101.93%
+pair 5 A 316679.87 p50 1620 p99 1650 | B 285216.59 p50 1790 p99 1880 | B/A 90.06%
+pair 6 A 309712.39 p50 1650 p99 1680 | B 285590.03 p50 1790 p99 1870 | B/A 92.21%
+pair 7 A 310174.23 p50 1640 p99 1680 | B 286436.38 p50 1790 p99 1870 | B/A 92.35%
+RESULT monoio:legacy / monoio:uring: 92.3% (min 89.1, max 101.9; 8 pairs)  p50 us A 1635 B 1790  p99 us A 1675 B 1870
+=== keepalive=1 compio:uring vs monoio:uring
+# A=monoio:uring B=compio:uring url=http://127.0.0.1:18080/ conf=generated pairs=8 duration=10s keepalive=1 workers=1 server_cpus=0 client_cpus=8-31 wrk=-t16/-c512
+pair 0 A 281477.96 p50 1820 p99 1850 | B 241826.94 p50 2120 p99 2150 | B/A 85.91%
+pair 1 A 281693.81 p50 1820 p99 1850 | B 241528.05 p50 2120 p99 2150 | B/A 85.74%
+pair 2 A 282416.38 p50 1810 p99 1840 | B 241508.87 p50 2120 p99 2150 | B/A 85.52%
+pair 3 A 281382.24 p50 1820 p99 1850 | B 279703.91 p50 1830 p99 1860 | B/A 99.40%
+pair 4 A 317216.32 p50 1610 p99 1640 | B 242419.42 p50 2120 p99 2140 | B/A 76.42%
+pair 5 A 315399.61 p50 1620 p99 1660 | B 241626.15 p50 2120 p99 2150 | B/A 76.61%
+pair 6 A 313626.85 p50 1630 p99 1660 | B 240728.78 p50 2130 p99 2160 | B/A 76.76%
+pair 7 A 316133.61 p50 1620 p99 1650 | B 240737.26 p50 2130 p99 2160 | B/A 76.15%
+RESULT compio:uring / monoio:uring: 82.5% (min 76.2, max 99.4; 8 pairs)  p50 us A 1720 B 2120  p99 us A 1750 B 2150
+=== keepalive=1 nginx=/usr/sbin/nginx vs monoio:uring
+# A=monoio:uring B=nginx=/usr/sbin/nginx url=http://127.0.0.1:18080/ conf=generated pairs=8 duration=10s keepalive=1 workers=1 server_cpus=0 client_cpus=8-31 wrk=-t16/-c512
+pair 0 A 314440.86 p50 1630 p99 1670 | B 246953.81 p50 2070 p99 4820 | B/A 78.54%
+pair 1 A 308085.68 p50 1620 p99 1840 | B 246977.83 p50 2070 p99 57740 | B/A 80.17%
+pair 2 A 316971.22 p50 1620 p99 1650 | B 246845.81 p50 2070 p99 60520 | B/A 77.88%
+pair 3 A 282929.05 p50 1810 p99 1840 | B 248156.28 p50 2060 p99 59990 | B/A 87.71%
+pair 4 A 315965.37 p50 1620 p99 1660 | B 246686.77 p50 2070 p99 55080 | B/A 78.07%
+pair 5 A 309225.68 p50 1650 p99 1690 | B 248746.67 p50 2050 p99 2220 | B/A 80.44%
+pair 6 A 308425.59 p50 1660 p99 1690 | B 213083.02 p50 2400 p99 103100 | B/A 69.09%
+pair 7 A 307719.21 p50 1660 p99 1700 | B 247104.26 p50 2070 p99 45280 | B/A 80.30%
+RESULT nginx=/usr/sbin/nginx / monoio:uring: 78.9% (min 69.1, max 87.7; 8 pairs)  p50 us A 1640 B 2070  p99 us A 1690 B 56410
