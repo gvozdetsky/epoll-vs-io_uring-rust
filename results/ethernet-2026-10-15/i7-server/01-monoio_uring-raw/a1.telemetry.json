@@ -1,0 +1,47 @@
+{
+  "server": {
+    "host": "eugene-devOps",
+    "seconds": 10.441405159974238,
+    "cpu_busy": {
+      "0": 95.98086124401914
+    },
+    "cpu_mean": 95.98086124401914,
+    "interface": "enp8s0",
+    "rx_mbps": 132.98541132402778,
+    "tx_mbps": 262.19121182026373,
+    "counters": {
+      "rx_bytes": 173569320,
+      "tx_bytes": 342205584,
+      "rx_packets": 1578688,
+      "tx_packets": 1577728,
+      "rx_errors": 0,
+      "tx_errors": 0,
+      "rx_dropped": 0,
+      "tx_dropped": 0
+    }
+  },
+  "client": {
+    "host": "eugene-omen",
+    "seconds": 10.44426077099979,
+    "cpu_busy": {
+      "0": 21.484375,
+      "2": 17.961165048543688,
+      "4": 19.14480077745384,
+      "6": 20.796890184645285
+    },
+    "cpu_mean": 19.846807752660702,
+    "interface": "eno1",
+    "rx_mbps": 262.1195249740911,
+    "tx_mbps": 132.9492151187526,
+    "counters": {
+      "rx_bytes": 342205584,
+      "tx_bytes": 173569534,
+      "rx_packets": 1577728,
+      "tx_packets": 1578689,
+      "rx_errors": 0,
+      "tx_errors": 0,
+      "rx_dropped": 0,
+      "tx_dropped": 0
+    }
+  }
+}

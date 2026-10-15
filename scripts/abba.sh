@@ -16,7 +16,7 @@
 set -euo pipefail
 source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
-PAIRS=8 DURATION=10s WARMUP=5s THROWAWAY=20s COOLDOWN=3
+PAIRS=8 DURATION=10s WARMUP=5s THROWAWAY=20s COOLDOWN="${COOLDOWN:-3}"
 while [[ $# -gt 2 ]]; do
     case "$1" in
         --pairs) PAIRS="$2"; shift 2 ;;
@@ -29,20 +29,42 @@ done
 A="$1" B="$2"
 
 work="$(mktemp -d -t abba-XXXXXX)"
-trap 'rm -rf "$work"' EXIT
+cleanup() {
+    if [[ -n "${OUTPUT_DIR:-}" ]]; then
+        mkdir -p "$OUTPUT_DIR"
+        cp -a "$work/." "$OUTPUT_DIR/"
+    fi
+    if [[ -n "$SERVER_HOST" ]]; then
+        on_host "$SERVER_HOST" rm -rf -- "$work"
+    fi
+    rm -rf -- "$work"
+}
+trap cleanup EXIT
 write_conf "$work"
+sync_conf "$work"
 
 # run VARIANT TAG [DURATION] -> "rps p50 p99 errors requests"
 run() {
-    local pid
-    pid="$(start_server "$1" "$work")"
-    run_wrk "$WARMUP" "$work/$2.warm"
-    run_wrk "${3:-$DURATION}" "$work/$2.wrk"
+    local pid status=0
+    pid="$(start_server "$1" "$work")" || return 1
+    run_wrk "$WARMUP" "$work/$2.warm" || { stop_server "$pid"; return 1; }
+    if [[ "${NET_STATS:-0}" == 1 ]]; then
+        snapshot_hosts "$work/$2.before" || { stop_server "$pid"; return 1; }
+    fi
+    run_wrk "${3:-$DURATION}" "$work/$2.wrk" || status=$?
+    if [[ "${NET_STATS:-0}" == 1 ]]; then
+        snapshot_hosts "$work/$2.after" || status=$?
+    fi
     stop_server "$pid"
+    (( status == 0 )) || return "$status"
+    if [[ "${NET_STATS:-0}" == 1 ]]; then
+        python3 "$ROOT/scripts/netstats.py" report "$work/$2" "$SERVER_CPUS" \
+            "$CLIENT_CPUS" "${SERVER_IFACE:?}" "${CLIENT_IFACE:?}" >"$work/$2.telemetry.json" || return 1
+    fi
     wrk_stats "$work/$2.wrk"
 }
 
-echo "# A=$A B=$B url=$URL conf=${CONF_DIR:-generated} pairs=$PAIRS duration=$DURATION keepalive=$KEEPALIVE workers=$WORKERS server_cpus=$SERVER_CPUS client_cpus=$CLIENT_CPUS wrk=-t$WRK_THREADS/-c$WRK_CONNS"
+echo "# A=$A B=$B url=$CLIENT_URL conf=${CONF_DIR:-generated} pairs=$PAIRS duration=$DURATION warmup=$WARMUP cooldown=$COOLDOWN keepalive=$KEEPALIVE workers=$WORKERS server_cpus=$SERVER_CPUS client_cpus=$CLIENT_CPUS wrk=-t$WRK_THREADS/-c$WRK_CONNS server_host=${SERVER_HOST:-local} client_host=${CLIENT_HOST:-local}"
 run "$A" throwaway "$THROWAWAY" >/dev/null
 sleep "$COOLDOWN"
 

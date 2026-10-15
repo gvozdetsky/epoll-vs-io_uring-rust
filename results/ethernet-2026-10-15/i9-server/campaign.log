@@ -1,0 +1,7 @@
+[2026-10-15T10:34:11+02:00] START monoio:uring
+RESULT monoio:uring / monoio:uring: 100.1% (min 99.9, max 100.3; 4 pairs)  p50 us A 3020 B 3020  p99 us A 3120 B 3120
+[2026-10-15T10:36:36+02:00] START tokio
+RESULT tokio / monoio:uring: 100.2% (min 99.7, max 100.5; 4 pairs)  p50 us A 3005 B 2995  p99 us A 3095 B 3095
+[2026-10-15T10:39:12+02:00] START monoio:legacy
+RESULT monoio:legacy / monoio:uring: 100.1% (min 100.0, max 100.1; 4 pairs)  p50 us A 3010 B 3005  p99 us A 3110 B 3115
+[2026-10-15T10:41:36+02:00] DONE

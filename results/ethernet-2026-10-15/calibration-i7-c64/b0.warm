@@ -1,0 +1,13 @@
+Running 2s test @ http://10.203.0.194:18080/
+  4 threads and 64 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   571.96us  147.60us   5.24ms   94.96%
+    Req/Sec    28.17k     3.66k   51.12k    97.56%
+  Latency Distribution
+     50%  577.00us
+     75%  590.00us
+     90%  600.00us
+     99%  626.00us
+  229758 requests in 2.10s, 33.09MB read
+Requests/sec: 109414.09
+Transfer/sec:     15.76MB

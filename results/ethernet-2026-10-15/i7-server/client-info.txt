@@ -1,0 +1,92 @@
+2026-10-15T10:14:25+02:00
+Linux eugene-omen 7.0.0-38-generic #38~24.04.4-Ubuntu SMP PREEMPT_DYNAMIC Mon Sep 14 16:37:11 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+eno1             UP             10.203.0.1/24 fe80::9055:bd56:6ec:6201/64 
+wlp0s20f3        UP             192.168.10.139/24 fe80::56c9:1915:95ef:13de/64 
+br-0468366aa611  DOWN           172.19.0.1/16 
+docker0          DOWN           172.17.0.1/16 
+br-3572577faf5c  DOWN           172.20.0.1/16 
+default via 192.168.10.1 dev wlp0s20f3 proto dhcp src 192.168.10.139 metric 600 
+10.203.0.0/24 dev eno1 proto kernel scope link src 10.203.0.1 metric 100 
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown 
+172.19.0.0/16 dev br-0468366aa611 proto kernel scope link src 172.19.0.1 linkdown 
+172.20.0.0/16 dev br-3572577faf5c proto kernel scope link src 172.20.0.1 linkdown 
+192.168.10.0/24 dev wlp0s20f3 proto kernel scope link src 192.168.10.139 metric 600 
+1000
+full
+1500
+     32 powersave
+1e879b712e2483d9a5413e2b203dadefc3380ef0eb9dcdc04fb4dfce905a92e1  /home/eugene/articles/epoll-vs-io_uring-rust/bench/target/release/spike-compio
+c4ecce56d4c783787eb94d09e352979c2ca3047de27160f07034fd1ab26ef0a9  /home/eugene/articles/epoll-vs-io_uring-rust/bench/target/release/spike-compio.d
+0591fff56879ccdea338bda2e4a9dce9d1e88f088991b85d76c6aa4af0cdfad7  /home/eugene/articles/epoll-vs-io_uring-rust/bench/target/release/spike-monoio
+9148ea429e740f257e7c99fa0fc5156c23f4ab0400097c9a82c2afd335eb2758  /home/eugene/articles/epoll-vs-io_uring-rust/bench/target/release/spike-monoio.d
+7ae7f73f96e40397380777e78fbe1a33e3a270ed72671405e1a2b9d7ae0318d2  /home/eugene/articles/epoll-vs-io_uring-rust/bench/target/release/spike-tokio
+ce7ab1c4f570f95a54df773fda413003f2c2ecd0b4eece9fd2cc9d7c502515d5  /home/eugene/articles/epoll-vs-io_uring-rust/bench/target/release/spike-tokio-mt
+25dafd646a567443aa24d319ccadcd75eeb7fa0c8437ee7f0c55c9d6d6ed32cb  /home/eugene/articles/epoll-vs-io_uring-rust/bench/target/release/spike-tokio-mt.d
+fb463c04a194c37c749c02071e3ed5344a9c2a306f121c1d9dfd383b69e9aeec  /home/eugene/articles/epoll-vs-io_uring-rust/bench/target/release/spike-tokio-uring
+6f12640f7686e6d6e184103e6d4027b7c4d050f54a86119d4db23a5480a9b132  /home/eugene/articles/epoll-vs-io_uring-rust/bench/target/release/spike-tokio-uring.d
+8fe0905790503cd84f035940a8abdfe74e0f70febca5c65cafe646147dd4e8a3  /home/eugene/articles/epoll-vs-io_uring-rust/bench/target/release/spike-tokio.d
+Features for eno1:
+rx-checksumming: on
+tx-checksumming: on
+	tx-checksum-ipv4: on
+	tx-checksum-ip-generic: off [fixed]
+	tx-checksum-ipv6: on
+	tx-checksum-fcoe-crc: off [fixed]
+	tx-checksum-sctp: off [fixed]
+scatter-gather: on
+	tx-scatter-gather: on
+	tx-scatter-gather-fraglist: off [fixed]
+tcp-segmentation-offload: on
+	tx-tcp-segmentation: on
+	tx-tcp-ecn-segmentation: off [fixed]
+	tx-tcp-mangleid-segmentation: off
+	tx-tcp6-segmentation: on
+	tx-tcp-accecn-segmentation: off [fixed]
+generic-segmentation-offload: on
+generic-receive-offload: on
+large-receive-offload: off [fixed]
+rx-vlan-offload: on
+tx-vlan-offload: on
+ntuple-filters: off [fixed]
+receive-hashing: off [fixed]
+highdma: on [fixed]
+rx-vlan-filter: off [fixed]
+vlan-challenged: off [fixed]
+tx-gso-robust: off [fixed]
+tx-fcoe-segmentation: off [fixed]
+tx-gre-segmentation: off [fixed]
+tx-gre-csum-segmentation: off [fixed]
+tx-ipxip4-segmentation: off [fixed]
+tx-ipxip6-segmentation: off [fixed]
+tx-udp_tnl-segmentation: off [fixed]
+tx-udp_tnl-csum-segmentation: off [fixed]
+tx-gso-partial: off [fixed]
+tx-tunnel-remcsum-segmentation: off [fixed]
+tx-sctp-segmentation: off [fixed]
+tx-esp-segmentation: off [fixed]
+tx-udp-segmentation: off [fixed]
+tx-gso-list: off [fixed]
+tx-nocache-copy: off
+loopback: off [fixed]
+rx-fcs: off
+rx-all: off
+tx-vlan-stag-hw-insert: off [fixed]
+rx-vlan-stag-hw-parse: off [fixed]
+rx-vlan-stag-filter: off [fixed]
+l2-fwd-offload: off [fixed]
+hw-tc-offload: off [fixed]
+esp-hw-offload: off [fixed]
+esp-tx-csum-hw-offload: off [fixed]
+rx-udp_tunnel-port-offload: off [fixed]
+tls-hw-tx-offload: off [fixed]
+tls-hw-rx-offload: off [fixed]
+rx-gro-hw: off [fixed]
+tls-hw-record: off [fixed]
+rx-gro-list: off
+macsec-hw-offload: off [fixed]
+rx-udp-gro-forwarding: off
+hsr-tag-ins-offload: off [fixed]
+hsr-tag-rm-offload: off [fixed]
+hsr-fwd-offload: off [fixed]
+hsr-dup-offload: off [fixed]

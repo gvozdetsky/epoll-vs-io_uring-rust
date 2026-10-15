@@ -24,10 +24,40 @@ KEEPALIVE="${KEEPALIVE:-1}"
 # bench configs), with worker_processes set to WORKERS; URL says where.
 CONF_DIR="${CONF_DIR:-}"
 URL="${URL:-http://127.0.0.1:$PORT/}"
+CLIENT_URL="${CLIENT_URL:-$URL}"
+SERVER_HOST="${SERVER_HOST:-}"
+CLIENT_HOST="${CLIENT_HOST:-}"
+SERVER_ROOT="${SERVER_ROOT:-$ROOT}"
+CLIENT_ROOT="${CLIENT_ROOT:-$ROOT}"
 # A command the server is started under (per_request.sh: strace).
 WRAP="${WRAP:-}"
 
 die() { echo "error: $*" >&2; exit 1; }
+
+on_host() {
+    local host="$1"; shift
+    if [[ -z "$host" ]]; then
+        "$@"
+        return
+    fi
+    local quoted
+    local ssh_args=(-o BatchMode=yes -o ConnectTimeout=10)
+    [[ -z "${SSH_IDENTITY:-}" ]] || ssh_args+=(-i "$SSH_IDENTITY" -o IdentitiesOnly=yes)
+    [[ -z "${SSH_CONTROL_PATH:-}" ]] || ssh_args+=(-o ControlMaster=auto -o ControlPersist=30 -o "ControlPath=$SSH_CONTROL_PATH")
+    printf -v quoted '%q ' "$@"
+    ssh "${ssh_args[@]}" "$host" "$quoted"
+}
+
+sync_conf() {
+    [[ -n "$SERVER_HOST" ]] || return 0
+    on_host "$SERVER_HOST" mkdir -p "$1"
+    tar -C "$1" -cf - . | on_host "$SERVER_HOST" tar -C "$1" -xf -
+}
+
+snapshot_hosts() {
+    on_host "$SERVER_HOST" python3 "$SERVER_ROOT/scripts/netstats.py" snapshot >"$1.server.json"
+    on_host "$CLIENT_HOST" python3 "$CLIENT_ROOT/scripts/netstats.py" snapshot >"$1.client.json"
+}
 
 # write_conf DIR: a config both the spike servers and ruxen read.
 write_conf() {
@@ -61,6 +91,13 @@ EOF
 # start_server VARIANT DIR -> prints the pid
 start_server() {
     local variant="$1" dir="$2" bin driver
+    if [[ -n "$SERVER_HOST" ]]; then
+        on_host "$SERVER_HOST" env WORKERS="$WORKERS" SERVER_CPUS="$SERVER_CPUS" \
+            PORT="$PORT" URL="$URL" SERVER_HOST= CLIENT_HOST= \
+            bash -c 'source "$1/scripts/lib.sh"; start_server "$2" "$3"' \
+            bash "$SERVER_ROOT" "$variant" "$dir"
+        return
+    fi
     if [[ "$variant" == nginx=* ]]; then
         # nginx itself, the C reference (epoll): master + WORKERS workers,
         # all on SERVER_CPUS. `nginx=PATH`.
@@ -91,6 +128,11 @@ start_server() {
 }
 
 stop_server() {
+    if [[ -n "$SERVER_HOST" ]]; then
+        on_host "$SERVER_HOST" env PORT="$PORT" URL="$URL" SERVER_HOST= CLIENT_HOST= \
+            bash -c 'source "$1/scripts/lib.sh"; stop_server "$2"' bash "$SERVER_ROOT" "$1"
+        return
+    fi
     kill -TERM "$1" 2>/dev/null || true
     wait "$1" 2>/dev/null || true
     # ruxen's workers are separate processes; wait until the port is free.
@@ -103,8 +145,9 @@ stop_server() {
 
 # run_wrk DURATION OUT
 run_wrk() {
-    taskset -c "$CLIENT_CPUS" wrk -t "$WRK_THREADS" -c "$WRK_CONNS" --latency \
-        -d "$1" "$URL" >"$2" 2>&1
+    on_host "$CLIENT_HOST" env LC_ALL=C taskset -c "$CLIENT_CPUS" \
+        wrk -t "$WRK_THREADS" -c "$WRK_CONNS" --latency \
+        -d "$1" "$CLIENT_URL" >"$2" 2>&1
 }
 
 # wrk_stats FILE -> "rps p50_us p99_us errors requests"
@@ -120,7 +163,7 @@ wrk_stats() {
         $1 == "50%"                   { p50 = us($2) }
         $1 == "99%"                   { p99 = us($2) }
         /Non-2xx or 3xx responses:/   { err += $NF }
-        /Socket errors:/              { gsub(",", ""); err += $NF }
+        /Socket errors:/              { gsub(",", ""); err += $4 + $6 + $8 + $10 }
         / requests in /               { n = $1 }
         END { printf "%s %.0f %.0f %d %s\n", rps, p50, p99, err, n }
     ' "$1"

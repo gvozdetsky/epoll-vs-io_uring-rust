@@ -1,0 +1,6 @@
+# A=monoio:uring B=compio:uring url=http://10.203.0.194:18080/ conf=generated pairs=4 duration=10s warmup=3s cooldown=1 keepalive=1 workers=1 server_cpus=0 client_cpus=0,2,4,6 wrk=-t4/-c512 server_host=eugene@192.168.10.156 client_host=local
+pair 0 A 157981.43 p50 3220 p99 3300 | B 118580.41 p50 4310 p99 4420 | B/A 75.06%
+pair 1 A 157409.16 p50 3230 p99 3320 | B 118405.13 p50 4310 p99 4420 | B/A 75.22%
+pair 2 A 156744.56 p50 3250 p99 3330 | B 118073.34 p50 4330 p99 4450 | B/A 75.33%
+pair 3 A 157383.34 p50 3220 p99 3330 | B 118216.59 p50 4320 p99 4440 | B/A 75.11%
+RESULT compio:uring / monoio:uring: 75.2% (min 75.1, max 75.3; 4 pairs)  p50 us A 3225 B 4315  p99 us A 3325 B 4430

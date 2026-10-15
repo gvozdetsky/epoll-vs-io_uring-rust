@@ -1,0 +1,6 @@
+# A=monoio:uring B=tokio url=http://10.203.0.194:18080/ conf=generated pairs=4 duration=10s warmup=3s cooldown=1 keepalive=1 workers=1 server_cpus=0 client_cpus=0,2,4,6 wrk=-t4/-c512 server_host=eugene@192.168.10.156 client_host=local
+pair 0 A 156089.14 p50 3260 p99 3350 | B 123582.68 p50 4120 p99 4210 | B/A 79.17%
+pair 1 A 156839.39 p50 3240 p99 3330 | B 123743.53 p50 4110 p99 4200 | B/A 78.90%
+pair 2 A 156240.05 p50 3250 p99 3340 | B 122886.19 p50 4150 p99 4230 | B/A 78.65%
+pair 3 A 156606.05 p50 3250 p99 3330 | B 121486.78 p50 4190 p99 4280 | B/A 77.57%
+RESULT tokio / monoio:uring: 78.6% (min 77.6, max 79.2; 4 pairs)  p50 us A 3250 B 4135  p99 us A 3335 B 4220

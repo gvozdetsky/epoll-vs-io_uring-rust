@@ -1,0 +1,6 @@
+# A=monoio:uring B=nginx=/usr/sbin/nginx url=http://10.203.0.194:18080/ conf=generated pairs=4 duration=10s warmup=3s cooldown=1 keepalive=1 workers=1 server_cpus=0 client_cpus=0,2,4,6 wrk=-t4/-c512 server_host=eugene@192.168.10.156 client_host=local
+pair 0 A 157135.64 p50 3240 p99 3320 | B 74211.52 p50 6870 p99 101350 | B/A 47.23%
+pair 1 A 157244.63 p50 3240 p99 3320 | B 73468.01 p50 6930 p99 120840 | B/A 46.72%
+pair 2 A 157610.47 p50 3230 p99 3320 | B 74218.49 p50 6870 p99 248630 | B/A 47.09%
+pair 3 A 156630.83 p50 3250 p99 3330 | B 74102.91 p50 6890 p99 236240 | B/A 47.31%
+RESULT nginx=/usr/sbin/nginx / monoio:uring: 47.1% (min 46.7, max 47.3; 4 pairs)  p50 us A 3240 B 6880  p99 us A 3320 B 178540

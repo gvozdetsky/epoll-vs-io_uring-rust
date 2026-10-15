@@ -1,0 +1,82 @@
+2026-10-15T10:14:25+02:00
+Linux eugene-devOps 7.0.0-38-generic #38~24.04.4-Ubuntu SMP PREEMPT_DYNAMIC Mon Sep 14 16:37:11 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+enp8s0           UP             10.203.0.194/24 fe80::7391:18b7:26e0:b3c7/64 
+wlp7s0           UP             192.168.10.156/24 fe80::a35c:694d:9b85:dc36/64 
+default via 10.203.0.1 dev enp8s0 proto dhcp src 10.203.0.194 metric 100 
+default via 192.168.10.1 dev wlp7s0 proto dhcp src 192.168.10.156 metric 600 
+10.203.0.0/24 dev enp8s0 proto kernel scope link src 10.203.0.194 metric 100 
+192.168.10.0/24 dev wlp7s0 proto kernel scope link src 192.168.10.156 metric 600 
+1000
+full
+1500
+     12 performance
+1e879b712e2483d9a5413e2b203dadefc3380ef0eb9dcdc04fb4dfce905a92e1  /home/eugene/ruxen-bench/article/target/release/spike-compio
+0591fff56879ccdea338bda2e4a9dce9d1e88f088991b85d76c6aa4af0cdfad7  /home/eugene/ruxen-bench/article/target/release/spike-monoio
+7ae7f73f96e40397380777e78fbe1a33e3a270ed72671405e1a2b9d7ae0318d2  /home/eugene/ruxen-bench/article/target/release/spike-tokio
+ce7ab1c4f570f95a54df773fda413003f2c2ecd0b4eece9fd2cc9d7c502515d5  /home/eugene/ruxen-bench/article/target/release/spike-tokio-mt
+fb463c04a194c37c749c02071e3ed5344a9c2a306f121c1d9dfd383b69e9aeec  /home/eugene/ruxen-bench/article/target/release/spike-tokio-uring
+Features for enp8s0:
+rx-checksumming: on
+tx-checksumming: on
+	tx-checksum-ipv4: on
+	tx-checksum-ip-generic: off [fixed]
+	tx-checksum-ipv6: on
+	tx-checksum-fcoe-crc: off [fixed]
+	tx-checksum-sctp: off [fixed]
+scatter-gather: off
+	tx-scatter-gather: off
+	tx-scatter-gather-fraglist: off [fixed]
+tcp-segmentation-offload: off
+	tx-tcp-segmentation: off
+	tx-tcp-ecn-segmentation: off [fixed]
+	tx-tcp-mangleid-segmentation: off
+	tx-tcp6-segmentation: off
+	tx-tcp-accecn-segmentation: off [fixed]
+generic-segmentation-offload: off [requested on]
+generic-receive-offload: on
+large-receive-offload: off [fixed]
+rx-vlan-offload: on
+tx-vlan-offload: on
+ntuple-filters: off [fixed]
+receive-hashing: off [fixed]
+highdma: on [fixed]
+rx-vlan-filter: off [fixed]
+vlan-challenged: off [fixed]
+tx-gso-robust: off [fixed]
+tx-fcoe-segmentation: off [fixed]
+tx-gre-segmentation: off [fixed]
+tx-gre-csum-segmentation: off [fixed]
+tx-ipxip4-segmentation: off [fixed]
+tx-ipxip6-segmentation: off [fixed]
+tx-udp_tnl-segmentation: off [fixed]
+tx-udp_tnl-csum-segmentation: off [fixed]
+tx-gso-partial: off [fixed]
+tx-tunnel-remcsum-segmentation: off [fixed]
+tx-sctp-segmentation: off [fixed]
+tx-esp-segmentation: off [fixed]
+tx-udp-segmentation: off [fixed]
+tx-gso-list: off [fixed]
+tx-nocache-copy: off
+loopback: off [fixed]
+rx-fcs: off
+rx-all: off
+tx-vlan-stag-hw-insert: off [fixed]
+rx-vlan-stag-hw-parse: off [fixed]
+rx-vlan-stag-filter: off [fixed]
+l2-fwd-offload: off [fixed]
+hw-tc-offload: off [fixed]
+esp-hw-offload: off [fixed]
+esp-tx-csum-hw-offload: off [fixed]
+rx-udp_tunnel-port-offload: off [fixed]
+tls-hw-tx-offload: off [fixed]
+tls-hw-rx-offload: off [fixed]
+rx-gro-hw: off [fixed]
+tls-hw-record: off [fixed]
+rx-gro-list: off
+macsec-hw-offload: off [fixed]
+rx-udp-gro-forwarding: off
+hsr-tag-ins-offload: off [fixed]
+hsr-tag-rm-offload: off [fixed]
+hsr-fwd-offload: off [fixed]
+hsr-dup-offload: off [fixed]

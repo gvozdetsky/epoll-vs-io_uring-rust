@@ -1,0 +1,17 @@
+[2026-10-15T10:14:25+02:00] START monoio:uring
+RESULT monoio:uring / monoio:uring: 99.8% (min 99.5, max 99.9; 4 pairs)  p50 us A 3240 B 3245  p99 us A 3330 B 3335
+[2026-10-15T10:16:51+02:00] START tokio
+RESULT tokio / monoio:uring: 78.6% (min 77.6, max 79.2; 4 pairs)  p50 us A 3250 B 4135  p99 us A 3335 B 4220
+[2026-10-15T10:19:18+02:00] START monoio:legacy
+RESULT monoio:legacy / monoio:uring: 69.2% (min 68.8, max 69.4; 4 pairs)  p50 us A 3245 B 4695  p99 us A 3330 B 4850
+[2026-10-15T10:21:47+02:00] START compio:uring
+RESULT compio:uring / monoio:uring: 75.2% (min 75.1, max 75.3; 4 pairs)  p50 us A 3225 B 4315  p99 us A 3325 B 4430
+[2026-10-15T10:24:15+02:00] START tokio-mt
+RESULT tokio-mt / monoio:uring: 76.7% (min 76.5, max 76.9; 4 pairs)  p50 us A 3245 B 2110  p99 us A 3330 B 66955
+[2026-10-15T10:26:41+02:00] START tokio-uring
+RESULT tokio-uring / monoio:uring: 91.9% (min 91.0, max 92.7; 4 pairs)  p50 us A 3240 B 3555  p99 us A 3335 B 3680
+[2026-10-15T10:29:09+02:00] START compio:poll
+RESULT compio:poll / monoio:uring: 40.1% (min 39.7, max 40.6; 4 pairs)  p50 us A 3240 B 8045  p99 us A 3325 B 8335
+[2026-10-15T10:31:37+02:00] START nginx=/usr/sbin/nginx
+RESULT nginx=/usr/sbin/nginx / monoio:uring: 47.1% (min 46.7, max 47.3; 4 pairs)  p50 us A 3240 B 6880  p99 us A 3320 B 178540
+[2026-10-15T10:34:05+02:00] DONE
